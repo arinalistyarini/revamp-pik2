@@ -1,0 +1,20 @@
+//- src/views/components/header.pug
+include ../mixins/all
+
+header.header
+  nav(role="navigation", class=['navbar', 'fixed-top', 'navbar-expand-lg', 'navbar-light', 'bg-light'])
+    +link(name, 'index.html')(class="navbar-brand")
+      +img(name, logo)(width="30")
+      | Frontend
+    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbar-dropdown")
+      span.navbar-toggler-icon
+    #navbar-dropdown.collapse.navbar-collapse
+      ul.navbar-nav
+        +nav-item('About', 'about.html')
+        +nav-item('Product Listing', 'service.html')
+        +nav-item('Investment Opportunity', 'contact.html')
+        +nav-item('Facility', 'contact.html')
+        +nav-item('Tourism', 'contact.html')
+        +nav-item('CSR Program', 'contact.html')
+        +nav-item('News & Events', 'contact.html')
+        +nav-item('Career', 'contact.html')

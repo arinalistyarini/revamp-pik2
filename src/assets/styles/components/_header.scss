@@ -1,0 +1,24 @@
+/* src/assets/styles/components/_header.scss */
+
+.header {
+  .navbar-brand {
+    text-transform: uppercase;
+    flex-grow: 1;
+
+    img {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+}
+
+/*
+    Responsive
+  */
+
+@include media-breakpoint-down(sm) {
+}
