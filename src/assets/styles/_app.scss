@@ -3,6 +3,7 @@
 */
 @import './base/fonts';
 @import './base/custom';
+@import './base/icons';
 
 /*
   Bootstrap
@@ -30,6 +31,7 @@ $slick-arrow-color: $color !default;
 @import './components/footer';
 @import './components/navbar';
 @import './components/carousel';
+@import './components/banner-full';
 
 /*
   Layout

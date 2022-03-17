@@ -1,6 +1,121 @@
 /* src/assets/styles/components/_footer.scss */
 
 .footer {
+  background-color: $textColor;
+  color: #fff;
+  font-size: 24px;
+  line-height: 36px;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li {
+      list-style-type: none;
+      padding-left: 0;
+    }
+  }
+
+  .footer-container {
+    display: flex;
+    padding: 100px 60px 100px 100px;
+
+    .footer-nav {
+      &.marketing-gallery,
+      &.contact-us {
+        width: 30%;
+      }
+
+      &.quick-access,
+      &.explore {
+        width: 25%;
+      }
+
+      &.quick-access {
+        padding-left: 12px;
+      }
+    }
+  }
+
+  .item-title {
+    font-size: 36px;
+    line-height: 45px;
+  }
+
+  .socmed-list {
+    display: flex;
+
+    .item-text {
+      + .socmed-item {
+        padding-left: 48px;
+      }
+    }
+
+    .socmed-item {
+      + .socmed-item {
+        padding-left: 36px;
+      }
+    }
+
+    .socmed-link {
+      &:hover {
+        color: $green;
+        cursor: pointer;
+
+        .icon-pik {
+          background-color: $green;
+        }
+      }
+    }
+
+    &.socmed-button {
+      .socmed-item {
+        + .socmed-item {
+          padding-left: 20px;
+        }
+      }
+
+      .socmed-link {
+        border: 1px solid #fff;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        padding: 8px 24px;
+        font-size: 16px;
+        line-height: 20px;
+
+        .icon-pik {
+          + span {
+            padding-left: 8px;
+          }
+        }
+
+        &:hover {
+          border-color: $green;
+        }
+      }
+    }
+  }
+
+  .footer-item-links {
+    font-size: 20px;
+
+    .footer-item-link {
+      + .footer-item-link {
+        margin-top: 4px;
+      }
+    }
+
+    .footer-link {
+      text-transform: uppercase;
+
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
 }
 
 /*

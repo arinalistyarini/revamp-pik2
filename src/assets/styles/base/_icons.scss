@@ -1,0 +1,110 @@
+/* src/assets/styles/base/_icons.scss  */
+
+// https://css-tricks.com/using-svg/
+// https://stackoverflow.com/questions/13367868/how-to-modify-the-fill-color-of-an-svg-image-when-being-served-as-background-ima
+// https://codepen.io/noahblon/post/coloring-svgs-in-css-background-images
+
+.icon-pik {
+  display: inline-block;
+  text-indent: -9999px;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  background-color: #fff;
+
+  &.ip-house {
+    mask: url('/assets/icons/house.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/house.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-caret-down {
+    width: 11px;
+    height: 8px;
+    background-size: 11px 8px;
+    mask: url('/assets/icons/caret-down.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/caret-down.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-downtown {
+    mask: url('/assets/icons/downtown.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/downtown.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-shop {
+    mask: url('/assets/icons/shop.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/shop.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-virtual-reality {
+    mask: url('/assets/icons/virtual-reality.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/virtual-reality.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-apartment {
+    mask: url('/assets/icons/apartment.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/apartment.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-telephone {
+    width: 43px;
+    height: 35px;
+    background-size: 43px 35px;
+    mask: url('/assets/icons/telephone.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/telephone.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-whatsapp {
+    width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+    mask: url('/assets/icons/whatsapp.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/whatsapp.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-instagram {
+    width: 36px;
+    height: 36px;
+    background-size: 36px 36px;
+    mask: url('/assets/icons/instagram.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/instagram.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-facebook {
+    width: 18px;
+    height: 33px;
+    background-size: 18px 33px;
+    mask: url('/assets/icons/facebook.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/facebook.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-youtube {
+    width: 48px;
+    height: 32px;
+    background-size: 48px 32px;
+    mask: url('/assets/icons/youtube.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/youtube.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+}

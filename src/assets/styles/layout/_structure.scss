@@ -6,8 +6,34 @@ html {
 
 body {
   height: 100%;
+  font-family: $lexendDeca;
+  font-size: 16px;
+  font-weight: 400;
+  color: $textColor;
+
+  &:not(.home-page) {
+    main {
+      padding-top: 99px;
+    }
+  }
 }
 
-main > .container-fluid {
-  margin-top: 56px;
+b {
+  font-weight: 800;
+}
+
+a {
+  &.view-more {
+    &:after {
+      content: '>';
+      padding-left: 8px;
+      transition: padding-left 0.15s;
+    }
+
+    &:hover {
+      &:after {
+        padding-left: 16px;
+      }
+    }
+  }
 }
