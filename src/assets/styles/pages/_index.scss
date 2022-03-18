@@ -3,8 +3,53 @@
 .home-page {
   margin: 0;
 
-  main > .container-fluid {
+  .home-page-section {
+    margin-top: 56px;
+  }
+
+  .container-no-gap {
     padding: 0;
+  }
+
+  .cards-container {
+    display: flex;
+  }
+
+  .highlight-container {
+    width: 60%;
+  }
+
+  .list-container {
+    width: 40%;
+    padding-left: 70px;
+  }
+
+  .see-more {
+    display: inline-block;
+    margin-top: 40px;
+    color: $green;
+    font-size: 36px;
+    line-height: 45px;
+    font-weight: 700;
+
+    &:after {
+      content: '>';
+      padding-left: 8px;
+      transition: padding-left 0.15s;
+    }
+
+    &:hover {
+      color: $textColor;
+
+      &:after {
+        padding-left: 16px;
+      }
+    }
+  }
+
+  .map-content {
+    // https://stackoverflow.com/questions/17982111/sass-variable-in-css-calc-function
+    height: calc(100vh - #{$footerHeaderHeight});
   }
 }
 

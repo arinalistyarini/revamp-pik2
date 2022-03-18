@@ -7,63 +7,92 @@ $widthText: 43%;
   height: 100vh;
   overflow: hidden;
 
+  .slick-list,
+  .slick-track,
+  .slick-slide > div {
+    position: relative;
+    height: 100%;
+  }
+
   .banner-item {
     width: 100%;
     height: 100%;
+  }
 
-    .banner-image {
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    img {
       width: 100%;
-      height: 100%;
+    }
 
-      img {
-        width: 100%;
-      }
+    // gradient left
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background-image: linear-gradient(90deg, #707070 0%, #fff 100%);
+      mix-blend-mode: multiply;
+    }
+
+    // gradient left - for text
+    .banner-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $widthText;
+      height: 100%;
+      background-image: linear-gradient(90deg, #707070 0%, #fff 100%);
+      mix-blend-mode: multiply;
+    }
+
+    // gradient right
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background-image: linear-gradient(90deg, #fff 0%, #707070 100%);
+      mix-blend-mode: multiply;
     }
   }
 
   .banner-text {
     position: absolute;
     bottom: 190px;
-    left: 150px;
+    width: 100%;
+    left: 0;
     color: #fff;
     font-size: 36px;
     z-index: 1;
-    width: 545px;
+
+    b {
+      font-weight: 800;
+    }
+
+    .text-content {
+      width: 545px;
+    }
   }
 
-  // gradient left
-  &::before {
-    content: '';
+  .arrow-slider {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 100%;
-    background-image: linear-gradient(90deg, #707070 0%, #fff 100%);
-    mix-blend-mode: multiply;
-  }
+    z-index: 1;
+    bottom: 120px;
 
-  // gradient left - for text
-  .banner-gradient {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $widthText;
-    height: 100%;
-    background-image: linear-gradient(90deg, #707070 0%, #fff 100%);
-    mix-blend-mode: multiply;
-  }
+    &.arrow-slide-left {
+      right: 200px;
+    }
 
-  // gradient right
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background-image: linear-gradient(90deg, #fff 0%, #707070 100%);
-    mix-blend-mode: multiply;
+    &.arrow-slide-right {
+      right: 120px;
+    }
   }
 }

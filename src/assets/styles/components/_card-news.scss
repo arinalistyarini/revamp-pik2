@@ -1,0 +1,43 @@
+/* src/assets/styles/components/_card-news.scss */
+
+.card-news {
+  display: block;
+  background-color: #fff;
+  box-shadow: 2px 2px 10px 0 rgba(0,0,0,0.25);
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    padding-top: 50%;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  .card-content {
+    padding: 40px;
+
+    .card-date {
+      font-size: 24px;
+      line-height: 40px;
+    }
+  }
+
+  .card-title,
+  .card-date {
+    transition: 0.15s color;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .card-title,
+    .card-date {
+      color: $green;
+    }
+  }
+}

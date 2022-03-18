@@ -17,3 +17,8 @@ $navbar-light-active-color: $primary;
 // ---
 $textColor: #373737;
 $green: #67C101;
+$greenWhatsapp: #38B124;
+
+$footerHeight: 545px;
+$headerHeight: 99px;
+$footerHeaderHeight: calc(#{$footerHeight} + #{$headerHeight});

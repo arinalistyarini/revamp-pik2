@@ -9,6 +9,7 @@ import 'slick-carousel';
 
 // Scripts
 $(() => {
-  require('scripts/scroll');
-  require('scripts/carousel');
+  require('scripts/header');
+  require('scripts/homepage-slider');
+  require('scripts/homepage-map');
 });

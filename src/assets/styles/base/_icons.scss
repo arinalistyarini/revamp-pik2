@@ -107,4 +107,23 @@
     -webkit-mask-size: cover;
   }
 
+  &.ip-arrow-left {
+    width: 25px;
+    height: 44px;
+    background-size: 25px 44px;
+    mask: url('/assets/icons/arrow-left.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/arrow-left.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-arrow-right {
+    width: 25px;
+    height: 44px;
+    background-size: 48px 44px;
+    mask: url('/assets/icons/arrow-right.svg') no-repeat 100% 100%;
+    -webkit-mask: url('/assets/icons/arrow-right.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
 }
