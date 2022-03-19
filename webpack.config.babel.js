@@ -2,6 +2,7 @@
 import { resolve as _resolve } from 'path';
 import { ProvidePlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlBeautifyPlugin from 'html-beautify-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin, {
@@ -25,14 +26,7 @@ export default (env) => {
           filename: `${viewName}.html`,
           template: `views/pages/${view}`,
           inject: true,
-          minify:
-            nodeEnv === 'production'
-              ? {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true,
-              }
-              : false,
+          minify: false,
         };
         allPages.push(new HtmlWebpackPlugin(options));
       }
@@ -63,6 +57,7 @@ export default (env) => {
       alias: {
         modules: _resolve(__dirname, './node_modules'),
         source: _resolve(__dirname, './src'),
+        icons: _resolve(__dirname, './src/assets/icons'),
         images: _resolve(__dirname, './src/assets/images'),
         fonts: _resolve(__dirname, './src/assets/fonts'),
         styles: _resolve(__dirname, './src/assets/styles'),
@@ -95,7 +90,15 @@ export default (env) => {
         {
           test: /\.(s?)css$/,
           use: [
-            nodeEnv === 'development' ? 'style-loader' : _loader,
+            nodeEnv === 'development' ? 'style-loader' : {
+              loader: _loader,
+              // options: {
+              //   publicPath: (url) => {
+              //     console.log('mini-css-loader wakaka opo toh ', url);
+              //     return `${url}`;
+              //   },
+              // },
+            },
             {
               loader: 'css-loader',
               options: { importLoaders: 1, sourceMap: true },
@@ -114,27 +117,35 @@ export default (env) => {
           ],
         },
         {
-          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+          test: /\.(woff|woff2|eot|ttf|otf)(\?.*)?$/,
           loader: 'url-loader',
           options: {
-            limit: 5000,
+            limit: false,
             name: 'assets/fonts/[name].[ext]',
+            outputPath: (url) => {
+              return `../../${url}`;
+            },
           },
         },
         {
-          test: /\.(ico)(\?.*)?$/,
+          test: /\.(ico|svg)(\?.*)?$/,
           loader: 'url-loader',
           options: {
-            limit: 1000,
             name: 'assets/icons/[name].[ext]',
+            publicPath: (url) => {
+              return `../../${url}`;
+            },
           },
         },
         {
-          test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+          test: /\.(png|jpg|jpeg|gif)(\?.*)?$/,
           loader: 'url-loader',
           options: {
-            limit: 3000,
+            limit: false,
             name: 'assets/images/[name].[ext]',
+            outputPath: (url) => {
+              return `../../${url}`;
+            },
           },
         },
         {
@@ -198,18 +209,23 @@ export default (env) => {
         filename: 'index.html',
         template: 'views/index.pug',
         inject: true,
-        minify:
-          nodeEnv === 'production'
-            ? {
-              removeComments: true,
-              collapseWhitespace: true,
-              removeAttributeQuotes: true,
-            }
-            : false,
+        minify: false,
       }),
 
       // pages/ folder
       ...pages(),
+
+      new HtmlBeautifyPlugin({
+        config: {
+          html: {
+              end_with_newline: true,
+              indent_size: 2,
+              indent_with_tabs: false,
+              indent_inner_html: true,
+              preserve_newlines: true,
+          },
+        },
+      }),
 
       new ProvidePlugin({
         $: 'jquery',
