@@ -122,7 +122,7 @@ export default (env) => {
           options: {
             limit: false,
             name: 'assets/fonts/[name].[ext]',
-            outputPath: (url) => {
+            publicPath: (url) => {
               return `../../${url}`;
             },
           },
@@ -143,7 +143,7 @@ export default (env) => {
           options: {
             limit: false,
             name: 'assets/images/[name].[ext]',
-            outputPath: (url) => {
+            publicPath: (url) => {
               return `../../${url}`;
             },
           },
