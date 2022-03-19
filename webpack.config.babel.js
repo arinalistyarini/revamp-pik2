@@ -218,11 +218,11 @@ export default (env) => {
       new HtmlBeautifyPlugin({
         config: {
           html: {
-              end_with_newline: true,
-              indent_size: 2,
-              indent_with_tabs: false,
-              indent_inner_html: true,
-              preserve_newlines: true,
+            end_with_newline: true,
+            indent_size: 2,
+            indent_with_tabs: false,
+            indent_inner_html: true,
+            preserve_newlines: true,
           },
         },
       }),

@@ -33,6 +33,7 @@ $slick-arrow-color: $color !default;
 @import './components/card-news';
 @import './components/card-flat';
 @import './components/banner-full';
+@import './components/pagination';
 
 /*
   Layout
@@ -44,6 +45,7 @@ $slick-arrow-color: $color !default;
   Pages
 */
 @import './pages/index';
+@import './pages/news-events';
 @import './pages/about';
 @import './pages/service';
 @import './pages/contact';

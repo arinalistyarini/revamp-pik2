@@ -87,6 +87,10 @@ $widthText: 43%;
     z-index: 1;
     bottom: 120px;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &.arrow-slide-left {
       right: 200px;
     }

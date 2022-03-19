@@ -13,7 +13,7 @@ body {
 
   &:not(.home-page) {
     main {
-      padding-top: $headerHeight;
+      padding-top: calc(#{$headerHeight} + 56px);
     }
   }
 }
@@ -56,5 +56,21 @@ h5 {
 .container-fluid {
   &:not(.container-no-gap) {
     max-width: 1680px;
+  }
+}
+
+@media(max-width: 1765px) {
+  .container-fluid {
+    &:not(.container-no-gap) {
+      max-width: 1366px;
+    }
+  }
+}
+
+@media(max-width: 1500px) {
+  .container-fluid {
+    &:not(.container-no-gap) {
+      max-width: 1170px;
+    }
   }
 }
