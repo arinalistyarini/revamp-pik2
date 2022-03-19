@@ -9,7 +9,7 @@ header.header.fixed-top
     #navbar-dropdown.collapse.navbar-collapse
       ul.navbar-nav
         li.nav-item
-          a.nav-link(href='index.html' title='About')
+          a.nav-link(href='about.html' title='About')
             | About
         li.nav-item.has-child
           a.nav-link(href='index.html' title='Product Listing')
@@ -18,7 +18,7 @@ header.header.fixed-top
             .child-container
               ul.nav-child
                 li.child-item
-                  h5.child-link.title
+                  h4.child-link.title
                     i.icon-pik.ip-house
                     span Landed Housing
                 li.child-item
@@ -31,7 +31,7 @@ header.header.fixed-top
                   a.child-link.view-more(href='#') View More
               ul.nav-child
                 li.child-item
-                  h5.child-link.title
+                  h4.child-link.title
                     i.icon-pik.ip-apartment
                     span Apartment
                 li.child-item
@@ -44,7 +44,7 @@ header.header.fixed-top
                   a.child-link.view-more(href='#') View More
               ul.nav-child
                 li.child-item
-                  h5.child-link.title
+                  h4.child-link.title
                     i.icon-pik.ip-shop
                     span Shophouses
                 li.child-item
@@ -57,7 +57,7 @@ header.header.fixed-top
                   a.child-link.view-more(href='#') View More
               ul.nav-child
                 li.child-item
-                  h5.child-link.title
+                  h4.child-link.title
                     i.icon-pik.ip-downtown
                     span Commercial Lot
                 li.child-item
@@ -70,7 +70,7 @@ header.header.fixed-top
                   a.child-link.view-more(href='#') View More
               ul.nav-child
                 li.child-item
-                  h5.child-link.title
+                  h4.child-link.title
                     i.icon-pik.ip-virtual-reality
                     span Virtual Tour
                 li.child-item
@@ -94,8 +94,16 @@ header.header.fixed-top
           a.nav-link(href='index.html' title='CSR Program')
             | CSR Program
         li.nav-item
-          a.nav-link(href='index.html' title='News & Events')
+          a.nav-link(href='news-events.html' title='News & Events')
             | News & Events
         li.nav-item
           a.nav-link(href='index.html' title='Career')
             | Career
+        li.nav-item
+          .dropdown.nav-link
+            button#languageOptions.dropdown-toggle.btn(type='button' data-toggle='dropdown')
+              | EN
+            .dropdown-menu(aria-labelledby='languageOptions')
+              a.dropdown-item(href='#') ID
+              a.dropdown-item(href='#') CN
+

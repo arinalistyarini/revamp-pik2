@@ -7,6 +7,10 @@ $widthText: 43%;
   height: 100vh;
   overflow: hidden;
 
+  &.full-with-header {
+    height: calc(100vh - #{$headerHeight});
+  }
+
   .slick-list,
   .slick-track,
   .slick-slide > div {
@@ -27,7 +31,9 @@ $widthText: 43%;
     img {
       width: 100%;
     }
+  }
 
+  &:not(.no-gradient) {
     // gradient left
     &::before {
       content: '';
@@ -79,6 +85,26 @@ $widthText: 43%;
 
     .text-content {
       width: 545px;
+    }
+  }
+
+  &.green-arrow {
+    .arrow-slider {
+      .icon-pik {
+        background-color: $green;
+      }
+
+      &.arrow-slide-left {
+        left: 200px;
+      }
+  
+      &.arrow-slide-right {
+        right: 200px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
