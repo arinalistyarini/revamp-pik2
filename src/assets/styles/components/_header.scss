@@ -158,6 +158,8 @@ $navLinkPY: 36px;
       border-bottom: 2px solid transparent;
 
       &.dropdown {
+        padding: 30px 0 33px 2px;
+
         .dropdown-menu {
           top: calc(100% - 36px);
           min-width: 0;
@@ -234,6 +236,12 @@ $navLinkPY: 36px;
   
         .child-wrapper {
           top: 220px;
+        }
+
+        &.active {
+          .nav-link {
+            border-bottom: 2px solid transparent;
+          }
         }
       }
     }

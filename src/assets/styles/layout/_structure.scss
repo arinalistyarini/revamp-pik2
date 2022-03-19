@@ -74,6 +74,22 @@ h5 {
   }
 }
 
+p {
+  font-size: 18px;
+}
+
+.text-medium {
+  font-size: 20px;
+}
+
+.text-large {
+  font-size: 24px;
+}
+
+.text-thin {
+  font-weight: 300;
+}
+
 @media(max-width: 1765px) {
   .container-fluid {
     &:not(.container-no-gap) {

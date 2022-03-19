@@ -1,0 +1,24 @@
+.lightbox-item {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.lightbox-video {
+    position: relative;
+
+    &:before {
+      content: '';
+      filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.25));
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-block;
+      width: 183px;
+      height: 267px;
+      background-size: 183px 267px;
+      background-image: url('~icons/play.svg');
+      z-index: 1;
+    }
+  }
+}

@@ -18,6 +18,7 @@ $slick-loader-path: '~modules/slick-carousel/slick/' !default;
 $slick-arrow-color: $color !default;
 @import '~modules/slick-carousel/slick/slick.scss';
 @import '~modules/slick-carousel/slick/slick-theme.scss';
+@import '~modules/magnific-popup/src/css/main.scss';
 
 /*
   Utils
@@ -34,6 +35,8 @@ $slick-arrow-color: $color !default;
 @import './components/card-flat';
 @import './components/banner-full';
 @import './components/pagination';
+@import './components/lightbox-item';
+@import './components/thumbnail-list';
 
 /*
   Layout

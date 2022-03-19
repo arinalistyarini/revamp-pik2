@@ -5,7 +5,7 @@ const isBannerSliderAvailable = !!bannerSlider.length;
 if (isBannerSliderAvailable) {
   bannerSlider.each(function getEachBanner() {
     $(this).slick({
-      // autoplay: true,
+      autoplay: true,
       infinite: true,
       speed: 250,
       prevArrow: '<a class="arrow-slider arrow-slide-left"><i class="icon-pik ip-arrow-left"></i></a>',
