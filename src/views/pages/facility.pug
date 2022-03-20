@@ -1,0 +1,26 @@
+extends ./../layouts/base
+
+block vars
+  - title = 'Facility'
+  - bodyClass = 'facility-page'
+  - currentUrl = 'facility.html'
+
+block content
+  main(role="main").flex-shrink-0
+    .container-fluid
+      section
+        h2.text-dark-green.mb-5 FACILITY
+        h3.text-green.mb-4 Interactive 2D Map
+        .map-content.stretch-no-gutter
+          iframe(width='100%' height='100%' style='border:0' loading='lazy' allowfullscreen)
+      section.mt-5
+        h3.text-green.mb-4 Virtual Tour
+        .stretch-no-gutter
+          .img-wrapper
+            img(src="assets/images/banner/building.jpg" alt="Product")
+      section.mt-5
+        h3.text-green.mb-4 Video Facilities
+        .pik-banner.banner-full.ratio-5-2
+          a.banner-item.lightbox-item.lightbox-iframe.lightbox-video(href="https://www.youtube.com/watch?v=giN13SWKyoM&ab_channel=destinasiid")
+            .banner-image
+              img(src="assets/images/banner/building.jpg" alt="Building")
