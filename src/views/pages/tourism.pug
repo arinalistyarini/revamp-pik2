@@ -1,0 +1,50 @@
+extends ./../layouts/base
+
+block vars
+  - title = 'Tourism'
+  - bodyClass = 'tourism-page'
+  - currentUrl = 'tourism.html'
+
+block content
+  main(role="main").flex-shrink-0
+    .container-fluid
+      h2.text-dark-green.mb-4 TOURISM
+      .tourism-item
+        .pik-banner.banner-full.banner-slider.stretch-no-gutter.ratio-5-2.gradient
+          .banner-item
+            .banner-image
+              img(src="assets/images/banner/building.jpg" alt="Building")
+          .banner-item
+            .banner-image
+              img(src="assets/images/banner/beach.jpg" alt="Building")
+          .banner-item
+            .banner-image
+              img(src="assets/images/banner/cbd.jpg" alt="Building")
+          .banner-item
+            .banner-image
+              img(src="assets/images/banner/district.jpg" alt="Building")
+          .banner-item
+            .banner-image
+              img(src="assets/images/banner/map.jpg" alt="Building")
+        .tourism-item-info
+          .text-medium.text-dark-green Pantai Pasir Putih
+          .text-large.font-weight-bold.text-dark-green Golf Town
+          .mt-3
+            .d-flex.align-items-end.justify-content-center
+              .text-medium Operational Hours:
+              .pl-2.text-large.font-weight-bold 08:00 - 21:00
+      .tourism-item
+        .pik-banner.banner-full.stretch-no-gutter.ratio-5-2.gradient
+          .banner-item
+            .banner-image
+              img(src="assets/images/banner/building.jpg" alt="Building")
+        .tourism-item-info
+          .text-medium.text-dark-green Pantai Pasir Putih
+          .text-large.font-weight-bold.text-dark-green Water Park
+          .mt-3
+            .d-flex.align-items-end.justify-content-center
+              .text-medium Operational Hours:
+              .pl-2.text-large.font-weight-bold 09:00 - 18:00
+      ul.pagination
+        li.pagination-page.active
+          a See More

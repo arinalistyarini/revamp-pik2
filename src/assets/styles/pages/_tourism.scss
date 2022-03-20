@@ -1,0 +1,27 @@
+.tourism-page {
+  .tourism-item {
+    .pik-banner .arrow-slider {
+      bottom: 60px;
+      bottom: 36px;
+      transform: scale(0.7);
+  
+      &.arrow-slide-left {
+        right: 100px;
+      }
+  
+      &.arrow-slide-right {
+        right: 45px;
+      }
+    }
+
+    .tourism-item-info {
+      padding-top: 18px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    + .tourism-item {
+      margin-top: 56px;
+    }
+  }
+}

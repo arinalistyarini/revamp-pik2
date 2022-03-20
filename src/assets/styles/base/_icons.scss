@@ -117,6 +117,16 @@
     -webkit-mask-size: cover;
   }
 
+  &.ip-arrow-right {
+    width: 25px;
+    height: 44px;
+    background-size: 25px 44px;
+    mask: url('~icons/arrow-right.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/arrow-right.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
   &.ip-bathtub {
     width: 59px;
     height: 58px;
