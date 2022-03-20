@@ -14,6 +14,7 @@ body {
   &:not(.home-page) {
     main {
       padding-top: calc(#{$headerHeight} + 56px);
+      padding-bottom: 50px;
     }
   }
 }
@@ -55,11 +56,39 @@ h5 {
   line-height: 28px;
 }
 
-.text-green {
+.text-green,
+a.text-green:not([href]) {
   color: $green;
 
   .icon-pik {
     background-color: $green;
+  }
+}
+
+.text-dark-green,
+a.text-dark-green:not([href]) {
+  color: $darkGreen;
+
+  .icon-pik {
+    background-color: $darkGreen;
+  }
+}
+
+.text-grey,
+a.text-grey:not([href]) {
+  color: $grey;
+
+  .icon-pik {
+    background-color: $grey;
+  }
+}
+
+.text-blue,
+a.text-blue:not([href]) {
+  color: $blue;
+
+  .icon-pik {
+    background-color: $blue;
   }
 }
 

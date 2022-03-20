@@ -1,11 +1,13 @@
 /* src/assets/styles/components/_footer.scss */
+$footerTextSize: 16px;
+$footerLineHeight: 30px;
 
 .footer {
   position: relative;
   background-color: $textColor;
   color: #fff;
-  font-size: 20px;
-  line-height: 36px;
+  font-size: $footerTextSize;
+  line-height: $footerLineHeight;
 
   .chat-us {
     position: absolute;
@@ -58,22 +60,22 @@
 
     .footer-nav {
       &.marketing-gallery {
-        width: 35%;
+        width: 27%;
       }
 
       &.contact-us {
-        width: 26%;
+        width: 29%;
       }
 
       &.quick-access {
-        width: 25%;
+        width: 20%;
       }
 
       &.explore {
         width: 24%;
       }
 
-      &.quick-access {
+      + .footer-nav {
         padding-left: 12px;
       }
     }
@@ -96,11 +98,11 @@
 
     .socmed-link {
       &:hover {
-        color: $green;
+        color: $greenHeader;
         cursor: pointer;
 
         .icon-pik {
-          background-color: $green;
+          background-color: $greenHeader;
         }
       }
     }
@@ -128,14 +130,15 @@
         }
 
         &:hover {
-          border-color: $green;
+          border-color: $greenHeader;
         }
       }
     }
   }
 
   .footer-item-links {
-    font-size: 20px;
+    font-size: $footerTextSize;
+    line-height: $footerLineHeight;
 
     .footer-item-link {
       + .footer-item-link {

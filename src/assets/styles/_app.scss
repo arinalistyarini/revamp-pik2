@@ -37,6 +37,7 @@ $slick-arrow-color: $color !default;
 @import './components/pagination';
 @import './components/lightbox-item';
 @import './components/thumbnail-list';
+@import './components/img-wrapper';
 
 /*
   Layout
@@ -49,6 +50,7 @@ $slick-arrow-color: $color !default;
 */
 @import './pages/index';
 @import './pages/news-events';
+@import './pages/news-events-detail';
 @import './pages/about';
 @import './pages/service';
 @import './pages/contact';

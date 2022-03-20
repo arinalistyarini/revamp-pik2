@@ -45,7 +45,7 @@ $widthText: 43%;
       left: 0;
       width: 60%;
       height: 100%;
-      background-image: linear-gradient(90deg, #707070 0%, #fff 100%);
+      background-image: linear-gradient(90deg, $grey 0%, #fff 100%);
       mix-blend-mode: multiply;
     }
 
@@ -56,7 +56,7 @@ $widthText: 43%;
       left: 0;
       width: $widthText;
       height: 100%;
-      background-image: linear-gradient(90deg, #707070 0%, #fff 100%);
+      background-image: linear-gradient(90deg, $grey 0%, #fff 100%);
       mix-blend-mode: multiply;
     }
 
@@ -68,7 +68,7 @@ $widthText: 43%;
       right: 0;
       width: 50%;
       height: 100%;
-      background-image: linear-gradient(90deg, #fff 0%, #707070 100%);
+      background-image: linear-gradient(90deg, #fff 0%, $grey 100%);
       mix-blend-mode: multiply;
     }
   }
@@ -94,7 +94,7 @@ $widthText: 43%;
   &.green-arrow {
     .arrow-slider {
       .icon-pik {
-        background-color: $green;
+        background-color: $darkGreen;
       }
 
       &.arrow-slide-left {

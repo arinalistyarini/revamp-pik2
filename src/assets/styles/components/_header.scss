@@ -5,7 +5,7 @@ $navLinkPY: 36px;
 // normal navbar
 .header,
 .home-page .header.standard {
-  background-color: $green;
+  background-color: $greenHeader;
 
   .navbar.navbar-expand-lg {
     padding: 0 40px 4px 60px;
@@ -173,17 +173,17 @@ $navLinkPY: 36px;
         }
 
         .dropdown-item {
-          color: $green;
+          color: $greenHeader;
           padding: 4px 10px;
 
           &:hover {
             background-color: $textColor;
             text-decoration: underline;
-            color: $green;
+            color: $greenHeader;
           }
 
           + .dropdown-item {
-            border-top: 1px solid #707070;
+            border-top: 1px solid $grey;
           }
         }
 
@@ -192,7 +192,7 @@ $navLinkPY: 36px;
           background-color: #fff;
           border-radius: 0;
           padding: 3px 10px;
-          color: $green;
+          color: $greenHeader;
         }
       }
   

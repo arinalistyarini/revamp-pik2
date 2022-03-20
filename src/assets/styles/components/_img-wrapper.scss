@@ -1,0 +1,34 @@
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+
+    + .img-caption {
+      padding-top: 12px;
+    }
+  }
+
+  &.w-60 {
+    width: 60%;
+  }
+
+  &.radius {
+    img {
+      border-radius: 12px;
+    }
+  }
+
+  .img-caption {
+    font-size: 16px;
+    color: $blue;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  + p {
+    margin-top: 1rem;
+  }
+}
