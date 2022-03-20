@@ -24,7 +24,7 @@
     padding-left: 70px;
   }
 
-  .see-more {
+  .btn-see-more {
     display: inline-block;
     margin-top: 30px;
     color: $darkGreen;
@@ -32,16 +32,17 @@
     line-height: 30px;
     font-weight: 700;
 
-    &:after {
+    &::after {
       content: '>';
       padding-left: 8px;
       transition: padding-left 0.15s;
     }
 
     &:hover {
+      cursor: pointer;
       color: $textColor;
 
-      &:after {
+      &::after {
         padding-left: 16px;
       }
     }

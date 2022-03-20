@@ -33,11 +33,14 @@ $slick-arrow-color: $color !default;
 @import './components/navbar';
 @import './components/card-news';
 @import './components/card-flat';
-@import './components/banner-full';
+@import './components/pik-banner';
 @import './components/pagination';
 @import './components/lightbox-item';
 @import './components/thumbnail-list';
 @import './components/img-wrapper';
+@import './components/img-with-caption';
+@import './components/card-nav';
+@import './components/card-detailed';
 
 /*
   Layout
@@ -54,3 +57,4 @@ $slick-arrow-color: $color !default;
 @import './pages/about';
 @import './pages/service';
 @import './pages/contact';
+@import './pages/product-listing';

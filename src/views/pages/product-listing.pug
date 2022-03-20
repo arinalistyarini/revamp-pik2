@@ -1,0 +1,114 @@
+extends ./../layouts/base
+
+block vars
+  - title = 'Product Listing'
+  - bodyClass = 'product-listing-page'
+  - currentUrl = 'product-listing.html'
+
+block content
+  main(role="main").flex-shrink-0
+    .container-fluid
+      .pik-banner.stretch-no-gutter.ratio-10-3
+        .banner-item
+          .banner-image
+            img(src="assets/images/banner/building.jpg" alt="Building")
+            .banner-gradient
+      h2.text-dark-green.mt-5.mb-4 PRODUCT LISTING
+      ul.card-nav.total-shown-5
+        li.card-item
+          a.card-link
+            .img-wrapper.ratio-3-2.gradient-vertical
+              img(src="assets/images/banner/building.jpg" alt="Navigation")
+            .text-item Landed Housing
+        li.card-item
+          a.card-link
+            .img-wrapper.ratio-3-2.gradient-vertical
+              img(src="assets/images/banner/building.jpg" alt="Navigation")
+            .text-item Apartment
+        li.card-item
+          a.card-link
+            .img-wrapper.ratio-3-2.gradient-vertical
+              img(src="assets/images/banner/building.jpg" alt="Navigation")
+            .text-item Shophouses
+        li.card-item
+          a.card-link
+            .img-wrapper.ratio-3-2.gradient-vertical
+              img(src="assets/images/banner/building.jpg" alt="Navigation")
+            .text-item Commercial Lot
+        li.card-item
+          a.card-link
+            .img-wrapper.ratio-3-2.gradient-vertical
+              img(src="assets/images/banner/building.jpg" alt="Navigation")
+            .text-item Virtual Tour
+      .mt-5
+        ul.product-listing-cards
+          li.product-listing-item
+            .card-detailed
+              .card-detailed-title
+                h3.font-weight-bold Tokyo Riverside | 3BR
+                i.icon-pik.ip-house
+              .card-content
+                .card-image
+                  .img-wrapper.ratio-square
+                    img(src="assets/images/banner/building.jpg" alt="Product")
+                .text-wrapper
+                  p Osaka Riverview Apartment 2 Bedrooms is an apartment type that is equipped with 2 bedrooms, 1 bathroom, family room, and kitchen. This type has a size area of 26 m2 with 2200 watt electric capacity.
+                  .card-info
+                    ul.card-info-detail
+                      li.card-info-item
+                        .total-info
+                          .label-info
+                            | Area Lantai
+                          .detail-info
+                            | 26m2
+                      li.card-info-item
+                        .room-info
+                          i.icon-pik.ip-bedroom
+                          .total-room 3
+                      li.card-info-item
+                        .room-info
+                          i.icon-pik.ip-bathtub
+                          .total-room 2
+                    a.btn-light-radius Link E-catalogue
+      .mt-5
+        ul.card-nav.total-shown-3.style-bottom
+          li.card-item
+            a.card-link
+              .img-wrapper.ratio-3-2.gradient-vertical
+                img(src="assets/images/banner/building.jpg" alt="Navigation")
+              .text-item Landed Housing
+              .icon-item
+                i.icon-pik.ip-house
+          li.card-item
+            a.card-link
+              .img-wrapper.ratio-3-2.gradient-vertical
+                img(src="assets/images/banner/building.jpg" alt="Navigation")
+              .text-item Apartment
+              .icon-item
+                i.icon-pik.ip-house
+          li.card-item
+            a.card-link
+              .img-wrapper.ratio-3-2.gradient-vertical
+                img(src="assets/images/banner/building.jpg" alt="Navigation")
+              .text-item Shophouses
+              .icon-item
+                i.icon-pik.ip-house
+          li.card-item
+            a.card-link
+              .img-wrapper.ratio-3-2.gradient-vertical
+                img(src="assets/images/banner/building.jpg" alt="Navigation")
+              .text-item Commercial Lot
+              .icon-item
+                i.icon-pik.ip-house
+          li.card-item
+            a.card-link
+              .img-wrapper.ratio-3-2.gradient-vertical
+                img(src="assets/images/banner/building.jpg" alt="Navigation")
+              .text-item Virtual Tour
+              .icon-item
+                i.icon-pik.ip-house
+      ul.pagination
+        li.pagination-page.active
+          a Prev
+        li.pagination-page
+          a Next

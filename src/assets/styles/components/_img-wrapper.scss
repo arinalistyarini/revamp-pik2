@@ -1,3 +1,5 @@
+// https://css-tricks.com/aspect-ratio-boxes/
+
 .img-wrapper {
   position: relative;
   overflow: hidden;
@@ -5,10 +7,6 @@
 
   img {
     width: 100%;
-
-    + .img-caption {
-      padding-top: 12px;
-    }
   }
 
   &.w-60 {
@@ -16,19 +14,103 @@
   }
 
   &.radius {
-    img {
-      border-radius: 12px;
-    }
-  }
-
-  .img-caption {
-    font-size: 16px;
-    color: $blue;
-    font-weight: 400;
-    text-align: center;
+    border-radius: 12px;
   }
 
   + p {
     margin-top: 1rem;
+  }
+}
+
+.img-wrapper,
+.pik-banner {
+  display: block;
+
+  &.ratio-10-3:not(.pik-banner),
+  &.ratio-10-3 .banner-image {
+    padding-top: 30%;
+  }
+
+  &.ratio-3-2:not(.pik-banner),
+  &.ratio-3-2 .banner-image {
+    padding-top: 66.67%;
+  }
+
+  &.ratio-square:not(.pik-banner),
+  &.ratio-square .banner-image {
+    padding-top: 100%;
+  }
+
+  &.ratio-5-3:not(.pik-banner),
+  &.ratio-5-3 .banner-image {
+    padding-top: 60%;
+  }
+
+  &[class^='ratio-'],
+  &[class*=' ratio-'] {
+    height: auto;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &.gradient:not(.pik-banner),
+  &.gradient .banner-image {
+    // gradient left
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background-image: linear-gradient(90deg, $grey 0%, #fff 100%);
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+
+    // gradient left - for text
+    .banner-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $widthText;
+      height: 100%;
+      background-image: linear-gradient(90deg, $grey 0%, #fff 100%);
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+
+    // gradient right
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background-image: linear-gradient(90deg, #fff 0%, $grey 100%);
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+  }
+
+  &.gradient-vertical:not(.pik-banner),
+  &.gradient-vertical .banner-image {
+    // gradient bottom
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 85%;
+      background-image: linear-gradient(0, $grey 0%, #fff 100%);
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
   }
 }

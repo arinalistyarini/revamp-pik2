@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   justify-content: center;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 30px;
   list-style-type: none;
   padding: 70px 0 50px 0;
@@ -22,7 +22,7 @@
       display: block;
     }
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       width: calc(100% - 28px);
@@ -34,7 +34,7 @@
     }
 
     + .pagination-page {
-      &:before {
+      &::before {
         content: '';
         position: absolute;
         width: 1px;
@@ -46,7 +46,7 @@
     }
 
     &.active {
-      &:after {
+      &::after {
         background-color: $green;
       }
 
@@ -62,7 +62,7 @@
         color: $green;
       }
 
-      &:after {
+      &::after {
         background-color: $green;
       }
     }
