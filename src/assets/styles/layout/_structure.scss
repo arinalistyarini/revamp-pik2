@@ -42,6 +42,10 @@ a {
       }
     }
   }
+
+  &:hover {
+    color: currentColor;
+  }
 }
 
 h2 {
@@ -72,6 +76,10 @@ a.text-green:not([href]) {
   .icon-pik {
     background-color: $green;
   }
+
+  &:hover {
+    color: $green;
+  }
 }
 
 .text-dark-green,
@@ -80,6 +88,10 @@ a.text-dark-green:not([href]) {
 
   .icon-pik {
     background-color: $darkGreen;
+  }
+
+  &:hover {
+    color: $darkGreen;
   }
 }
 
@@ -90,6 +102,10 @@ a.text-grey:not([href]) {
   .icon-pik {
     background-color: $grey;
   }
+
+  &:hover {
+    color: $grey;
+  }
 }
 
 .text-blue,
@@ -98,6 +114,10 @@ a.text-blue:not([href]) {
 
   .icon-pik {
     background-color: $blue;
+  }
+
+  &:hover {
+    color: $blue;
   }
 }
 
@@ -108,6 +128,10 @@ a.text-blue:not([href]) {
 }
 
 p {
+  font-size: 16px;
+}
+
+.text-xmedium {
   font-size: 18px;
 }
 
@@ -117,6 +141,14 @@ p {
 
 .text-large {
   font-size: 24px;
+}
+
+.text-xxlarge {
+  font-size: 70px;
+}
+
+.text-xxxxlarge {
+  font-size: 90px;
 }
 
 .text-thin {

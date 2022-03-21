@@ -41,6 +41,8 @@ $slick-arrow-color: $color !default;
 @import './components/img-with-caption';
 @import './components/card-nav';
 @import './components/card-detailed';
+@import './components/card-square';
+@import './components/table-pik';
 
 /*
   Layout
@@ -60,3 +62,4 @@ $slick-arrow-color: $color !default;
 @import './pages/product-listing';
 @import './pages/tourism';
 @import './pages/facility';
+@import './pages/csr-program';

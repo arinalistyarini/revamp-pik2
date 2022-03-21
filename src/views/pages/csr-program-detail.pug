@@ -1,0 +1,62 @@
+extends ./../layouts/base
+
+block vars
+  - title = 'CSR Program'
+  - bodyClass = 'csr-program-page'
+  - currentUrl = 'csr-program.html'
+
+block content
+  main(role="main").flex-shrink-0
+    .container-fluid
+      .pik-banner.stretch-no-gutter.ratio-10-3.gradient
+        .banner-item
+          .banner-image
+            img(src="assets/images/content/news-events.jpg" alt="CSR Banner")
+            .banner-gradient
+      .pt-4
+        a.text-thin.text-xmedium.text-grey < Back to list Program
+      h2.text-dark-green.mt-2.mb-5 CSR PROGRAM
+      .post-title-wrapper
+        h2.font-weight-bold Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem adipiscing consectetur elit
+        .font-weight-bold.text-green
+          p 12 November 2021
+      section.stretch-to-left
+        .two-columns
+          .img-content
+            .img-wrapper.ratio-5-3
+              img(src="assets/images/content/news-events.jpg" alt="CSR Banner")
+          .content-column
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            .d-flex.mt-5
+              .column-data.text-dark-green.text-center
+                .text-xmedium Consectetur adipiscing
+                .text-xxxxlarge 70%
+              .pl-5.column-data.text-dark-green.text-center
+                .text-xmedium Non proident
+                .text-xxxxlarge 103%
+      section.stretch-to-right.my-5
+        .two-columns
+          .content-column
+            table.table-pik.table
+              thead
+                tr
+                  th(scope='col') Non
+                  th(scope='col') Non proident
+                  th(scope='col') Non proident
+                  th(scope='col') Non proident
+              tbody
+                tr
+                  td
+                    .text-xxlarge 4
+                  td
+                    .text-xxlarge 921
+                  td
+                    .text-xxlarge 20%
+                  td
+                    .text-xxlarge 82
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+          .img-content
+            .img-wrapper.ratio-5-3
+              img(src="assets/images/content/news-events.jpg" alt="CSR Banner")
+      section.my-5
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum

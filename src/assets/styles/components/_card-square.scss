@@ -1,0 +1,21 @@
+.card-square {
+  text-align: center;
+
+  .card-content {
+    transition: 0.15s color;
+
+    h4 {
+      transition: 0.15s color;
+    }
+  }
+
+  &:hover {
+    .card-content {
+      color: $green;
+
+      h4 {
+        color: $green;
+      }
+    }
+  }
+}

@@ -10,5 +10,46 @@
   margin-bottom: 40px;
 }
 
+$gapBetweenColumn: 40px;
+
+.two-columns {
+  display: flex;
+  align-items: flex-start;
+
+  .img-content {
+    width: 50%;
+    + .content-column {
+      padding-left: $gapBetweenColumn;
+    }
+  }
+
+  .content-column {
+    + .img-content {
+      padding-left: $gapBetweenColumn;
+    }
+  }
+}
+
+.stretch-to-left {
+  .two-columns {
+    .img-content {
+      width: 50%;
+
+      + .content-column {
+        width: 50%;
+      }
+    }
+
+    .content-column {
+      width: 50%;
+
+      + .img-content {
+        width: 50%;
+      }
+    }
+  }
+}
+
+
 @include media-breakpoint-down(sm) {
 }

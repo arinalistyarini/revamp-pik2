@@ -1,0 +1,40 @@
+.table-pik {
+  thead {
+    th {
+      border-top: 1px solid $green;
+      border-right: 1px solid $green;
+      background-color: $green;
+      color: #fff;
+      font-weight: 400;
+
+      &:first-child {
+        border-left: 1px solid $green;
+      }
+    }
+
+    tr:last-child {
+      th {
+        border-bottom: 1px solid $green;
+      } 
+    }
+  }
+
+  tbody {
+    td,
+    th {
+      border-top: 1px solid $blackGreen;
+      border-right: 1px solid $blackGreen;
+      color: $darkGreen;
+  
+      &:first-child {
+        border-left: 1px solid $blackGreen;
+      }
+    }
+  }
+
+  tr:last-child {
+    td {
+      border-bottom: 1px solid $blackGreen;
+    }
+  }
+}
