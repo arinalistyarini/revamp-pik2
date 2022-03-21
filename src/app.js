@@ -16,4 +16,5 @@ $(() => {
   require('scripts/lightbox');
   require('scripts/thumbnail-slider');
   require('scripts/full-width');
+  require('scripts/image-cover');
 });
