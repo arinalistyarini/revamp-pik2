@@ -11,14 +11,16 @@ body {
   font-weight: 400;
   color: $textColor;
 
-  &:not(.home-page):not(.product-listing-page) {
+  &:not(.home-page):not(.product-listing-page):not(.csr-program-page):not(.csr-program-detail-page) {
     main {
       padding-top: calc(#{$headerHeight} + 56px);
       padding-bottom: 50px;
     }
   }
 
-  &.product-listing-page {
+  &.product-listing-page,
+  &.csr-program-page,
+  &.csr-program-detail-page {
     padding-top: $headerHeight;
     padding-bottom: 50px;
   }
