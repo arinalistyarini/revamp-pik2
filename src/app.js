@@ -15,4 +15,5 @@ $(() => {
   require('scripts/homepage-map');
   require('scripts/lightbox');
   require('scripts/thumbnail-slider');
+  require('scripts/full-width');
 });

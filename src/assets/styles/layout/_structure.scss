@@ -99,11 +99,6 @@ a.text-blue:not([href]) {
   }
 }
 
-.stretch-no-gutter {
-  width: calc(100vw - 8px);
-  margin-left: calc((100vw - 100%) * -1 / 2);
-}
-
 .container-fluid {
   &:not(.container-no-gap) {
     max-width: 1680px;
@@ -157,6 +152,15 @@ a:not([href]) {
       color: #fff;
     }
   }
+}
+
+// for measuring scrollbar width
+.scrollbar-measure {
+	width: 100px;
+	height: 100px;
+	overflow: scroll;
+	position: absolute;
+	top: -9999px;
 }
 
 @media(max-width: 1765px) {
