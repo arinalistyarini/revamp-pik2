@@ -13,6 +13,12 @@
 
   .cards-container {
     display: flex;
+
+    .btn-see-more {
+      font-size: 24px;
+      line-height: 30px;
+      margin-top: 30px;
+    }
   }
 
   .highlight-container {
@@ -22,30 +28,6 @@
   .list-container {
     width: 40%;
     padding-left: 70px;
-  }
-
-  .btn-see-more {
-    display: inline-block;
-    margin-top: 30px;
-    color: $darkGreen;
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: 700;
-
-    &::after {
-      content: '>';
-      padding-left: 8px;
-      transition: padding-left 0.15s;
-    }
-
-    &:hover {
-      cursor: pointer;
-      color: $textColor;
-
-      &::after {
-        padding-left: 16px;
-      }
-    }
   }
 
   .map-content {

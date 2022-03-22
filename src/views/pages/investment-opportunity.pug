@@ -1,0 +1,46 @@
+extends ./../layouts/base
+
+block vars
+  - title = 'c'
+  - bodyClass = 'investment-opportunity-page'
+  - currentUrl = 'investment-opportunity.html'
+
+block content
+  main(role="main").flex-shrink-0
+    .container-fluid.py-4
+      h2.text-dark-green.mb-4 INVESTMENT OPPORTUNITY
+      .logo-investment
+        .img-wrapper
+            img(src="assets/images/content/awards-2.jpeg" alt="Logo")
+      .mt-5
+        .card-detailed
+          .card-content
+            .card-image
+              .img-wrapper.ratio-square
+                img(src="assets/images/banner/building.jpg" alt="Product")
+            .text-wrapper
+              .column-title
+                h3.text-title.font-weight-bold Lorem ipsum dolor sit amet
+                .column-logo
+                  .img-wrapper.fill-height
+                    img(src="assets/images/content/awards-2.jpeg" alt="Product")
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
+              .column-nav.mt-auto
+                .text-blue.font-weight-bold IDR 250.000.000
+                a.btn-see-more See More
+      .mt-5
+        .card-detailed
+          .card-content
+            .text-wrapper
+              .column-title
+                h3.text-title.font-weight-bold Lorem ipsum dolor sit amet
+                .column-logo
+                  .img-wrapper.fill-height
+                    img(src="assets/images/content/awards-2.jpeg" alt="Product")
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
+              .column-nav.mt-auto
+                .text-blue.font-weight-bold IDR 250.000.000
+                a.btn-see-more See More
+            .card-image
+              .img-wrapper.ratio-square
+                img(src="assets/images/banner/building.jpg" alt="Product")

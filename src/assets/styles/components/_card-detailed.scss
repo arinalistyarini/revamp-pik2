@@ -117,4 +117,26 @@
       font-weight: bold;
     }
   }
+
+  .column-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .text-title {
+      padding-right: 16px;
+    }
+
+    .column-logo {
+      height: 100px;
+
+      .img-wrapper {
+        height: 100px;
+      }
+    }
+
+    + p {
+      margin-top: 24px;
+    }
+  }
 }

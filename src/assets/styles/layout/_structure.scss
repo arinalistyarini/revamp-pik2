@@ -129,6 +129,7 @@ a.text-blue:not([href]) {
 
 p {
   font-size: 16px;
+  line-height: 28px;
 }
 
 .text-xmedium {
@@ -184,6 +185,35 @@ a:not([href]) {
 
     &:not([href]) {
       color: #fff;
+    }
+  }
+}
+
+.btn-see-more {
+  display: inline-block;
+  color: $darkGreen;
+  font-weight: 700;
+
+  &::after {
+    content: '>';
+    padding-left: 8px;
+    transition: padding-left 0.15s;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $textColor;
+
+    &::after {
+      padding-left: 16px;
+    }
+  }
+
+  &:not([href]) {
+    color: $darkGreen;
+
+    &:hover {
+      color: $darkGreen;
     }
   }
 }
