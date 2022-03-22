@@ -55,6 +55,14 @@
   &[class*=' ratio-'] {
     height: auto;
 
+    &:not(.pik-banner) {
+      overflow: hidden;
+    }
+
+    .banner-image {
+      overflow: hidden;
+    }
+
     .slick-list,
     > .banner-item {
       position: absolute;
