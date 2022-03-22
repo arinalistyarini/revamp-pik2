@@ -3,11 +3,11 @@
 function giveStandardHeader() {
   const isHomepage = $('.home-page');
   if (isHomepage) {
-    const header = $('.header');
+    const headerElement = $('.header');
     if ($(window).scrollTop() >= 160) {
-      header.addClass('standard');
+      headerElement.addClass('standard');
     } else {
-      header.removeClass('standard');
+      headerElement.removeClass('standard');
     }
   }
 }
@@ -21,10 +21,12 @@ function markParentMenu() {
   });
 }
 
-giveStandardHeader();
-markParentMenu();
-
-// https://stackoverflow.com/a/22616213
-$(window).on('scroll', () => {
+export default function header() {
   giveStandardHeader();
-});
+  markParentMenu();
+
+  // https://stackoverflow.com/a/22616213
+  $(window).on('scroll', () => {
+    giveStandardHeader();
+  });
+}
