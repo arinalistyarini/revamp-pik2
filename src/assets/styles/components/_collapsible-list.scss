@@ -1,0 +1,85 @@
+.collapsible-list {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+
+  .collapsible-item {
+    &:last-child {
+      .collapsible-header {
+        border-bottom: 1px solid $green;
+
+        &.collapsed {
+          border-bottom: 1px solid $textColor;
+        }
+
+        &:hover {
+          border-bottom: 1px solid $green;
+        }
+      }
+    }
+  }
+
+  .collapsible-header {
+    color: #fff;
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid $green;
+    border-left: 1px solid $green;
+    border-right: 1px solid $green;
+    border-bottom: 1px solid #fff;
+    background-color: $green;
+    transition: 0.15s background-color, 0.15s border;
+    position: relative;
+    
+    &.collapsed {
+      border-top: 1px solid $textColor;
+      border-left: 1px solid $textColor;
+      border-right: 1px solid $textColor;
+      background-color: $textColor;
+
+      &::after {
+        transform: translateY(-50%) rotate(0);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-top: 1px solid $green;
+      border-left: 1px solid $green;
+      border-right: 1px solid $green;
+      border-bottom: 1px solid #fff;
+      background-color: $green;
+    }
+
+    .icon-pik {
+      transform: scale(0.75);
+    }
+
+    .icon-wrapper {
+      min-width: 70px;
+
+      + .collapsible-header-title {
+        padding-left: 16px;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      transform: translateY(-50%) rotate(-180deg);
+      background-image: url('~icons/caret-down.svg');
+      transition: 0.15s transform;
+      width: 20px;
+      height: 14px;
+      margin-left: 12px;
+      background-size: 20px 14px;
+    }
+  }
+
+  .collapsible-body {
+    border-left: 1px solid $strokeGrey;
+    border-right: 1px solid $strokeGrey;
+    padding: 60px 60px 40px 100px;
+  }
+}

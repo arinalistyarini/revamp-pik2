@@ -8,6 +8,7 @@ body {
   height: 100%;
   font-family: $lexendDeca;
   font-size: 16px;
+  line-height: 28px;
   font-weight: 400;
   color: $textColor;
 
@@ -217,6 +218,29 @@ a:not([href]) {
 
     &:hover {
       color: $darkGreen;
+    }
+  }
+}
+
+.btn-green {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+  background-color: $green;
+  color: #fff;
+  font-size: 20px;
+  padding: 12px 20px;
+  transition: 0.15s background-color;
+
+  &:hover {
+    cursor: pointer;
+    color: $textColor;
+    background-color: $darkGreen;
+  }
+
+  &:not([href]) {
+    color: #fff;
+
+    &:hover {
+      color: #fff;
     }
   }
 }

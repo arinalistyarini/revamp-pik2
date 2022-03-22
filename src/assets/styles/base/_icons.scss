@@ -146,4 +146,64 @@
     mask-size: cover;
     -webkit-mask-size: cover;
   }
+
+  &.ip-manager {
+    width: 70px;
+    height: 70px;
+    background-size: 70px 70px;
+    mask: url('~icons/manager.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/manager.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-project-manager {
+    width: 58px;
+    height: 58px;
+    background-size: 58px 58px;
+    mask: url('~icons/project-manager.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/project-manager.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-business-network {
+    width: 70px;
+    height: 70px;
+    background-size: 70px 70px;
+    mask: url('~icons/business-network.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/business-network.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-business-building {
+    width: 70px;
+    height: 70px;
+    background-size: 70px 70px;
+    mask: url('~icons/business-building.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/business-building.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-find-user-male {
+    width: 70px;
+    height: 70px;
+    background-size: 70px 70px;
+    mask: url('~icons/find-user-male.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/find-user-male.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-person-growth {
+    width: 70px;
+    height: 90px;
+    background-size: 70px 90px;
+    mask: url('~icons/person-growth.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/person-growth.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
 }
