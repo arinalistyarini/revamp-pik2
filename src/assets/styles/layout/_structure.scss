@@ -11,7 +11,7 @@ body {
   font-weight: 400;
   color: $textColor;
 
-  &:not(.home-page):not(.product-listing-page):not(.csr-program-page):not(.csr-program-detail-page) {
+  &:not(.home-page):not(.product-listing-page):not(.csr-program-page):not(.csr-program-detail-page):not(.career-page) {
     main {
       padding-top: calc(#{$headerHeight} + 56px);
       padding-bottom: 50px;
@@ -20,9 +20,12 @@ body {
 
   &.product-listing-page,
   &.csr-program-page,
-  &.csr-program-detail-page {
-    padding-top: $headerHeight;
-    padding-bottom: 50px;
+  &.csr-program-detail-page,
+  &.career-page {
+    main {
+      padding-top: $headerHeight;
+      padding-bottom: 50px;
+    }
   }
 }
 

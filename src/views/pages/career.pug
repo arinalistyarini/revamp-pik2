@@ -1,0 +1,20 @@
+extends ./../layouts/base
+
+block vars
+  - title = 'Career'
+  - bodyClass = 'career-page'
+  - currentUrl = 'career.html'
+
+block content
+  main(role="main").flex-shrink-0
+    .container-fluid
+      .pik-banner.stretch-no-gutter.ratio-10-3.gradient
+        .banner-item
+          .banner-image
+            img(src="assets/images/banner/building.jpg" alt="Building")
+            .banner-gradient
+      h2.text-dark-green.mt-5.mb-4 CAREER
+      p blahblah
+      ul.pagination
+        li.pagination-page.active-dark
+          a See More

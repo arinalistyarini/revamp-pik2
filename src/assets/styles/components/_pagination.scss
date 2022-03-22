@@ -55,6 +55,17 @@
       }
     }
 
+    &.active-dark {
+      &::after {
+        background-color: $darkGreen;
+      }
+
+      a {
+        color: $darkGreen;
+      }
+    }
+
+
     &:hover {
       cursor: pointer;
 
