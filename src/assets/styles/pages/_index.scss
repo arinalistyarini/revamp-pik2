@@ -31,8 +31,7 @@
   }
 
   .map-content {
-    // https://stackoverflow.com/questions/17982111/sass-variable-in-css-calc-function
-    height: calc(100vh - #{$footerHeaderHeight});
+    height: 400px;
   }
 }
 
@@ -40,5 +39,20 @@
   Responsive
 */
 
-@include media-breakpoint-down(sm) {
+@media(max-width: 991px) {
+  .home-page {
+    .cards-container {
+      flex-wrap: wrap;
+    }
+
+    .highlight-container {
+      width: 100%;
+    }
+
+    .list-container {
+      width: 100%;
+      padding-left: 0;
+      padding-top: 40px;
+    }
+  }
 }

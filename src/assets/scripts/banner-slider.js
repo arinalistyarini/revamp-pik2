@@ -4,8 +4,14 @@ export default function bannerSlider() {
   const isBannerSliderElementAvailable = !!bannerSliderElement.length;
   if (isBannerSliderElementAvailable) {
     bannerSliderElement.each(function getEachBanner() {
+      // unslick first
+      if ($(this).hasClass('slick-initialized')) {
+        $(this).slick('unslick');
+      }
+
+      // slick again
       $(this).slick({
-        autoplay: true,
+        autoplay: process.env.NODE_ENV !== 'development',
         infinite: true,
         speed: 500,
         prevArrow: '<a class="arrow-slider arrow-slide-left"><i class="icon-pik ip-arrow-left"></i></a>',

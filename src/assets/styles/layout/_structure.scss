@@ -14,7 +14,7 @@ body {
   &:not(.home-page):not(.product-listing-page):not(.csr-program-page):not(.csr-program-detail-page):not(.career-page) {
     main {
       padding-top: calc(#{$headerHeight} + 56px);
-      padding-bottom: 50px;
+      padding-bottom: 70px;
     }
   }
 
@@ -24,7 +24,7 @@ body {
   &.career-page {
     main {
       padding-top: $headerHeight;
-      padding-bottom: 50px;
+      padding-bottom: 70px;
     }
   }
 }
@@ -39,6 +39,7 @@ a {
 
     &:hover {
       cursor: pointer;
+      text-decoration: none;
 
       &::after {
         padding-left: 16px;
@@ -48,6 +49,7 @@ a {
 
   &:hover {
     color: currentColor;
+    text-decoration: none;
   }
 }
 
@@ -206,6 +208,7 @@ a:not([href]) {
   &:hover {
     cursor: pointer;
     color: $textColor;
+    text-decoration: none;
 
     &::after {
       padding-left: 16px;
@@ -217,6 +220,7 @@ a:not([href]) {
 
     &:hover {
       color: $darkGreen;
+      text-decoration: none;
     }
   }
 }
@@ -266,5 +270,54 @@ a:not([href]) {
     &:not(.container-no-gap) {
       max-width: 1170px;
     }
+  }
+}
+
+@media(max-width: 1500px) {
+  .container-fluid {
+    &:not(.container-no-gap) {
+      max-width: 1170px;
+    }
+  }
+}
+
+@media(max-width: $maxWidthMobileBreakpoint) {
+  body {
+    &:not(.home-page):not(.product-listing-page):not(.csr-program-page):not(.csr-program-detail-page):not(.career-page) {
+      main {
+        padding-top: calc(#{$headerHeight} + 24px);
+        padding-bottom: 36px;
+      }
+    }
+  
+    &.product-listing-page,
+    &.csr-program-page,
+    &.csr-program-detail-page,
+    &.career-page{
+      main {
+        padding-top: $headerHeight;
+        padding-bottom: 36px;
+      }
+    }
+
+    &.home-page {
+      main {
+        padding-top: $headerHeight;
+      }
+    }
+  }
+}
+
+@media(max-width: 1199px) {
+  .container-fluid {
+    &:not(.container-no-gap) {
+      max-width: 1080px;
+    }
+  }
+}
+
+@media(max-width: 991px) {
+  .btn-light-radius {
+    padding: 4px 20px;
   }
 }

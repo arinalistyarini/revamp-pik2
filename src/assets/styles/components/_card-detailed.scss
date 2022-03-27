@@ -68,7 +68,7 @@
         padding-left: 24px;
         position: relative;
 
-        &:before {
+        &::before {
           content: '';
           position: absolute;
           width: 1px;
@@ -137,6 +137,83 @@
 
     + p {
       margin-top: 24px;
+    }
+  }
+}
+
+@media(max-width: 991px) {
+  .card-detailed {
+    .card-info {
+      flex-direction: column;
+    }
+
+    .card-info-detail {
+      .card-info-item {
+        + .card-info-item {
+          margin-left: 16px;
+          padding-left: 16px;
+        }
+      }
+
+      + .btn-light-radius {
+        margin-top: 16px;
+      }
+    }
+
+    .total-info {
+      text-align: left;
+
+      .detail-info {
+        font-size: 20px;
+      }
+    }
+
+    .room-info {
+      .icon-pik {
+        width: 24px;
+        height: 24px;
+        background-size: 24px 24px;
+      }
+
+      .total-room {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  .card-detailed {
+    .card-detailed-title {
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 12px;
+
+      h3 {
+        padding-left: 6px;
+        font-size: 18px;
+      }
+    }
+
+    .card-content {
+      flex-direction: column;
+
+      .card-image {
+        width: 100%;
+
+        .img-wrapper {
+          padding-top: 56%;
+        }
+      }
+
+      .text-wrapper {
+        width: auto;
+      }
+    }
+
+    .card-info-detail {
+      margin: 0 12px;
     }
   }
 }

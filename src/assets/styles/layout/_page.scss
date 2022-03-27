@@ -51,5 +51,56 @@ $gapBetweenColumn: 40px;
 }
 
 
-@include media-breakpoint-down(sm) {
+@media(max-width: 991px) {
+  .stretch-to-left {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .stretch-to-right {
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+  
+  .two-columns {
+    flex-direction: column;
+
+    .img-content {
+      width: 100% !important;
+
+      + .content-column {
+        width: 100% !important;
+        padding-left: 0;
+        padding-top: 24px;
+      }
+    }
+
+    .content-column {
+      width: 100% !important;
+
+      + .img-content {
+        width: 100% !important;
+        padding-left: 0;
+        padding-top: 24px;
+      }
+    }
+  }
+
+  .post-title-wrapper {
+    width: 100%;
+
+    h2 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
 }
+
+@media(max-width: 480px) {
+  .column-data {
+    + .column-data {
+      padding-left: 16px !important;
+    }
+  }
+}
+

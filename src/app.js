@@ -16,6 +16,9 @@ import lightbox from './assets/scripts/lightbox';
 import thumbnailSlider from './assets/scripts/thumbnail-slider';
 import fullWidth from './assets/scripts/full-width';
 import imageCover from './assets/scripts/image-cover';
+import onResize from './assets/scripts/on-resize';
+import openChildMenu from './assets/scripts/open-child-menu';
+import collapsible from './assets/scripts/collapsible';
 
 // Scripts
 $(() => {
@@ -26,4 +29,7 @@ $(() => {
   thumbnailSlider();
   fullWidth();
   imageCover();
+  collapsible();
+  openChildMenu();
+  onResize();
 });

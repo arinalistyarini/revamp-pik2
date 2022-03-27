@@ -40,11 +40,11 @@ $widthText: 43%;
 
   .banner-text {
     position: absolute;
-    bottom: 190px;
+    bottom: 18%;
     width: 100%;
     left: 0;
     color: #fff;
-    font-size: 36px;
+    font-size: 28px;
     z-index: 1;
 
     b {
@@ -63,11 +63,11 @@ $widthText: 43%;
       }
 
       &.arrow-slide-left {
-        left: 200px;
+        left: 10%;
       }
   
       &.arrow-slide-right {
-        right: 200px;
+        right: 10%;
       }
 
       &:hover {
@@ -79,18 +79,127 @@ $widthText: 43%;
   .arrow-slider {
     position: absolute;
     z-index: 1;
-    bottom: 120px;
+    bottom: 14%;
 
     &:hover {
       cursor: pointer;
     }
 
     &.arrow-slide-left {
-      right: 200px;
+      right: 16%;
     }
 
     &.arrow-slide-right {
-      right: 120px;
+      right: 9%;
     }
   }
+}
+
+@media(orientation: portrait) {
+  .pik-banner.banner-slider,
+  .pik-banner {
+    &.full-height,
+    &.full-with-header {
+      height: auto !important;
+      padding-top: 56%;
+    }
+
+    .banner-image {
+      overflow: hidden;
+    }
+
+    .slick-list,
+    > .banner-item,
+    .lightbox-item.lightbox-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }  
+}
+
+@media(max-width: $maxWidthMobileBreakpoint) {
+  .pik-banner {
+    &.full-height {
+      height: calc(100vh - #{$headerHeight});
+    }
+
+    .banner-text {
+      bottom: 12%;
+      font-size: 32px;
+    }
+
+    .arrow-slider {
+      bottom: 12%;
+    }
+  }
+}
+
+@media(max-width: 991px) {
+  .pik-banner.banner-slider,
+  .pik-banner {
+    .banner-text {
+      font-size: 24px;
+    }
+
+    &:not(.green-arrow) {
+      .arrow-slider {
+        &.arrow-slide-left {
+          right: 12%;
+        }
+        &.arrow-slide-right {
+          right: 5%;
+        }
+      }  
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  .pik-banner.banner-slider,
+  .pik-banner {
+    .banner-text {
+      font-size: 14px;
+
+      .text-content {
+        width: calc(100% - 36px);
+      }
+    }
+
+    &:not(.green-arrow) {
+      .arrow-slider {
+        bottom: auto;
+        top: 10%;
+  
+        &.arrow-slide-left {
+          right: 12%;
+        }
+
+        &.arrow-slide-right {
+          right: 3%;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 480px) {
+  .pik-banner {
+    .arrow-slider {
+      .icon-pik {
+        width: 14px;
+        height: 25px;
+        background-size: 14px 25px;
+      }
+    }
+  }  
 }

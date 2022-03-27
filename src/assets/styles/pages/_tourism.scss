@@ -25,3 +25,80 @@
     }
   }
 }
+
+@media(max-width: 991px) {
+  .tourism-page {
+    .tourism-item {
+      .tourism-item-info {
+        .text-medium {
+          font-size: 18px;
+        }
+
+        .text-large {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  .tourism-page {
+    .tourism-item {
+      .pik-banner,
+      .pik-banner.banner-slider {
+        &:not(.green-arrow) {
+          .arrow-slider {
+            bottom: 36px;
+            top: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 480px) {
+  .tourism-page {
+    .tourism-item {
+      .tourism-item-info {
+        .text-medium {
+          font-size: 16px;
+        }
+
+        .text-large {
+          font-size: 18px;
+        }
+
+        .mt-3 {
+          .d-flex {
+            display: block !important;
+
+            .pl-2 {
+              padding-left: 0 !important;
+            }
+          }
+        }
+      }
+
+      .pik-banner,
+      .pik-banner.banner-slider {
+        &:not(.green-arrow) {
+          .arrow-slider {
+            bottom: 20px;
+
+            &.arrow-slide-left {
+              right: auto;
+              left: 45px;
+            }
+          }
+        }
+      }
+    }
+
+    .img-wrapper.ratio-5-2,
+    .pik-banner.ratio-5-2 {
+      padding-top: 56%;
+    }
+  }
+}

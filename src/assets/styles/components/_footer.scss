@@ -13,8 +13,6 @@ $footerLineHeight: 30px;
     position: absolute;
     top: -52px;
     right: 110px;
-    width: 107px;
-    height: 107px;
     border-radius: 100%;
     width: 107px;
     height: 107px;
@@ -60,19 +58,19 @@ $footerLineHeight: 30px;
 
     .footer-nav {
       &.marketing-gallery {
-        width: 27%;
+        width: 26%;
       }
 
       &.contact-us {
-        width: 29%;
+        width: 33%;
       }
 
       &.quick-access {
-        width: 20%;
+        width: 21%;
       }
 
       &.explore {
-        width: 24%;
+        width: 20%;
       }
 
       + .footer-nav {
@@ -121,7 +119,7 @@ $footerLineHeight: 30px;
         align-items: center;
         padding: 8px 24px;
         font-size: 16px;
-        line-height: 20px;
+        line-height: 24px;
 
         .icon-pik {
           + span {
@@ -158,8 +156,173 @@ $footerLineHeight: 30px;
 }
 
 /*
-  Responsive
+  Responsive footer
 */
 
-@include media-breakpoint-down(sm) {
+@media(max-width: 1199px) {
+  .footer {
+    .footer-container {
+      flex-wrap: wrap;
+      margin: 0 -12px 0 -12px;
+      padding: 24px 0;
+
+      .footer-nav {
+        &.marketing-gallery,
+        &.contact-us,
+        &.quick-access,
+        &.explore {
+          width: 50%;
+          padding: 24px 12px;
+        }
+
+        &.quick-access,
+        &.explore {
+          border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+      }
+
+      .item-title {
+        margin-bottom: 8px !important;
+      }
+    }
+
+    .footer-item-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .footer-item-link {
+        margin-bottom: 4px;
+        margin-right: 12px;
+
+        + .footer-item-link {
+          margin-top: 0;
+          position: relative;
+          padding-left: 12px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            width: 1px;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  .footer {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 0;
+      padding: 48px 0 16px 0;
+
+      .footer-nav {
+        &.marketing-gallery,
+        &.contact-us,
+        &.quick-access,
+        &.explore {
+          width: 100%;
+          padding: 0;
+          border-top: 0 solid transparent;
+        }
+
+        &.marketing-gallery {
+          .pt-5 {
+            padding-top: 0 !important;
+          }
+        }
+
+        + .footer-nav {
+          margin-top: 48px;
+        }
+      }
+    }
+
+    .contact-telephone {
+      justify-content: center;
+      text-align: center;
+      padding-top: 8px;
+
+      .ip-telephone {
+        width: 32px;
+        height: 26px;
+        background-size: 32px 26px;
+      }
+    }
+
+    .socmed-list,
+    .footer-item-links {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .socmed-list {
+      .ip-facebook {
+        width: 15px;
+        height: 27px;
+        background-size: 15px 27px;
+      }
+
+      .ip-instagram {
+        width: 27px;
+        height: 27px;
+        background-size: 27px 27px;
+      }
+
+      .ip-youtube {
+        width: 41px;
+        height: 27px;
+        background-size: 41px 27px;
+      }
+    }
+  }
+}
+
+@media(max-width: 480px) {
+  .footer .socmed-list.socmed-button {
+    flex-wrap: wrap;
+
+    .socmed-item {
+      width: 100%;
+
+      + .socmed-item {
+        padding-left: 0;
+        padding-top: 16px;
+      }
+    }
+
+    .socmed-link {
+      justify-content: center;
+    }
+  }
+}
+
+// responsive chat-us
+@media(max-width: 1320px) {
+  .footer {
+    .chat-us {
+      right: 60px;
+      top: -36px;
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  .footer {
+    .chat-us {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 90px;
+      top: -54px;
+    }
+  }
 }

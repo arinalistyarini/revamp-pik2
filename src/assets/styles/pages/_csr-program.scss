@@ -13,3 +13,45 @@
     }
   }
 }
+
+@media(max-width: 1199px) {
+  .text-xxxxlarge {
+    font-size: 55px;
+  }
+
+  .text-xxlarge {
+    font-size: 40px;
+  }
+}
+
+@media(max-width: 991px) {
+  .csr-program-page {
+    .csr-list {
+      .csr-item {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media(max-width: 767px) {
+  .csr-program-page {
+    .csr-list {
+      .csr-item {
+        width: 100%;
+      }
+    }
+  }  
+}
+
+@media(max-width: 480px) {
+  .csr-program-page {
+    .text-xxxxlarge {
+      font-size: 32px;
+    }
+  
+    .text-xxlarge {
+      font-size: 24px;
+    }
+  }
+}

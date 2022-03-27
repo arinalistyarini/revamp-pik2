@@ -38,3 +38,15 @@
     }
   }
 }
+
+@media(max-width: 480px) {
+  .table-pik {
+    thead {
+      tr {
+        th {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

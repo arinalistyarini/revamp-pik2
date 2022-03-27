@@ -15,3 +15,11 @@
     margin-bottom: 40px;
   }
 }
+
+@media(max-width: 767px) {
+  .news-events-container {
+    .news-events-item {
+      width: 100%;
+    }
+  }
+}

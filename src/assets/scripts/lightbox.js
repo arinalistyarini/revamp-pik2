@@ -12,6 +12,7 @@ export default function lightbox() {
       if (type) {
         $(this).magnificPopup({
           type,
+          src: $(this).attr('href'),
         });
       }
     });
