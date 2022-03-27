@@ -779,6 +779,14 @@ $navLinkPY: 36px;
           padding-bottom: 20px;
         }
       }
+
+      .nav-link {
+        &.dropdown {
+          .dropdown-menu {
+            width: 56px;
+          }
+        }
+      }
     }
   }
 }
