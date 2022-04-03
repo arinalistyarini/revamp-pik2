@@ -42,7 +42,7 @@ export default (env) => {
     output: {
       path: _resolve(__dirname, './dist'),
       publicPath: '',
-      filename: 'assets/js/[name].[hash:7].bundle.js',
+      filename: 'assets/js/[name].b949cbc.bundle.js',
     },
     devServer: {
       contentBase: _resolve(__dirname, './src'),
@@ -171,7 +171,7 @@ export default (env) => {
           default: false,
           vendors: false,
           vendor: {
-            filename: 'assets/js/vendor.[hash:7].bundle.js',
+            filename: 'assets/js/vendor.b949cbc.bundle.js',
             chunks: 'all',
             test: /node_modules/,
           },
@@ -196,8 +196,8 @@ export default (env) => {
       ]),
       // Extract CSS
       new MiniCssExtractPlugin({
-        filename: 'assets/css/[name].[hash:7].bundle.css',
-        chunkFilename: '[id].[hash:7].css',
+        filename: 'assets/css/[name].b949cbc.bundle.css',
+        chunkFilename: '[id].b949cbc.css',
       }),
 
       /*
