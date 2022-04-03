@@ -7,7 +7,7 @@ html {
 body {
   height: 100%;
   font-family: $lexendDeca;
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 400;
   color: $textColor;
 
@@ -126,14 +126,8 @@ a.text-blue:not([href]) {
   }
 }
 
-.container-fluid {
-  &:not(.container-no-gap) {
-    max-width: 1680px;
-  }
-}
-
 p {
-  font-size: 16px;
+  font-size: 15.5px;
   line-height: 28px;
 }
 
@@ -257,36 +251,12 @@ a:not([href]) {
 	top: -9999px;
 }
 
-@media(max-width: 1765px) {
-  .container-fluid {
-    &:not(.container-no-gap) {
-      max-width: 1366px;
-    }
-  }
-}
-
-@media(max-width: 1500px) {
-  .container-fluid {
-    &:not(.container-no-gap) {
-      max-width: 1170px;
-    }
-  }
-}
-
-@media(max-width: 1500px) {
-  .container-fluid {
-    &:not(.container-no-gap) {
-      max-width: 1170px;
-    }
-  }
-}
-
 @media(max-width: $maxWidthMobileBreakpoint) {
   body {
     &:not(.home-page):not(.product-listing-page):not(.csr-program-page):not(.csr-program-detail-page):not(.career-page) {
       main {
         padding-top: calc(#{$headerHeight} + 24px);
-        padding-bottom: 36px;
+        padding-bottom: 68px;
       }
     }
   
@@ -308,11 +278,34 @@ a:not([href]) {
   }
 }
 
+.container-fluid:not(.container-no-gap),
+.header .navbar.navbar-expand-lg .nav-item .child-wrapper .child-container,
+.home-page .header.standard .navbar.navbar-expand-lg .nav-item .child-wrapper .child-container {
+  max-width: var(--container-max-width);
+}
+
+@media(max-width: 1765px) {
+  :root {
+    --container-max-width: 1366px;
+    --right-based-on-container: 50px;
+  }
+}
+
+@media(max-width: 1500px) {
+  :root {
+    --container-max-width: 1300px;
+  }
+}
+
+@media(max-width: 1399px) {
+  :root {
+    --container-max-width: 1170px;
+  }
+}
+
 @media(max-width: 1199px) {
-  .container-fluid {
-    &:not(.container-no-gap) {
-      max-width: 1080px;
-    }
+  :root {
+    --container-max-width: 1080px;
   }
 }
 

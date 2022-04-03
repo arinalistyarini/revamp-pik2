@@ -47,7 +47,7 @@
     .tourism-item {
       .pik-banner,
       .pik-banner.banner-slider {
-        &:not(.green-arrow) {
+        &:not(.overlay-arrow) {
           .arrow-slider {
             bottom: 36px;
             top: auto;
@@ -63,7 +63,7 @@
     .tourism-item {
       .tourism-item-info {
         .text-medium {
-          font-size: 16px;
+          font-size: 15.5px;
         }
 
         .text-large {
@@ -83,7 +83,7 @@
 
       .pik-banner,
       .pik-banner.banner-slider {
-        &:not(.green-arrow) {
+        &:not(.overlay-arrow) {
           .arrow-slider {
             bottom: 20px;
 

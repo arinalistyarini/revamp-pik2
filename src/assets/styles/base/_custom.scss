@@ -30,4 +30,10 @@ $footerHeight: 545px;
 $headerHeight: 99px;
 $footerHeaderHeight: calc(#{$footerHeight} + #{$headerHeight});
 
-$maxWidthMobileBreakpoint: 1291px;
+$maxWidthMobileBreakpoint: 1209px;
+$minWidthNotMobileBreakpoint: 1210px;
+
+:root {
+  --container-max-width: 1680px;
+  --right-based-on-container: 110px;
+}
