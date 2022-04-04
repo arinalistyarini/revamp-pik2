@@ -1144,6 +1144,33 @@ section.no-padding-bottom {
     color: var(--thm-primary);
 }
 
+.main-nav__header-one.two .main-nav__main-navigation .main-nav__navigation-box > .dropdown {
+    padding: 36px 0px;
+}
+
+.main-nav__header-one.two .main-nav__main-navigation .main-nav__navigation-box .dropdown .dropdown-toggle {
+    border: 0 solid transparent;
+    background-color: #fff;
+    border-radius: 0;
+    padding: 3px 10px;
+    color: var(--thm-primary);
+}
+
+.main-nav__header-one.two .main-nav__main-navigation .main-nav__navigation-box .dropdown .dropdown-menu {
+    min-width: 0;
+    border-radius: 0;
+    border: 0 solid transparent;
+    background-color: #373737;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.main-nav__header-one.two .main-nav__main-navigation .main-nav__navigation-box .dropdown .dropdown-item {
+    color: var(--thm-primary);
+    padding: 4px 10px;
+}
+
 .main-nav__header-one.two .main-nav__right_one .icon_search_box {
     padding: 40px 0;
 }
