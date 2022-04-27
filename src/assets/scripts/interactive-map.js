@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 
 import L from 'leaflet';
@@ -10,9 +11,13 @@ const INTERACTIVE_MAP_SEARCHES = '.interactive-map-search';
 const INTERACTIVE_MAP_LOADER = '.interactive-map-loader';
 const WIDTH_BREAKPOINT = 991;
 
+export function getExistingMap(id) {
+  return initiatedMaps.find((map) => id === map._container.id);
+}
+
 export function clearMapMarkers(id) {
   if (initiatedMaps.length) {
-    const existingMap = initiatedMaps.find((map) => id === map._container.id);
+    const existingMap = getExistingMap(id);
 
     // https://stackoverflow.com/a/62545611
     existingMap.eachLayer((layer) => {
@@ -86,7 +91,7 @@ export function interactiveMapAddOnsPositionAndClearSearch(id) {
 
 export function mapToggleLoader(id, isLoading) {
   if (initiatedMaps.length) {
-    const selectedMap = initiatedMaps.find((map) => id === map._container.id);
+    const selectedMap = getExistingMap(id);
     const mapDOM = $(`#${id}`);
     const loader = mapDOM.find(INTERACTIVE_MAP_LOADER);
     const search = mapDOM.find(`${INTERACTIVE_MAP_SEARCHES}`).length
@@ -111,12 +116,56 @@ export function mapToggleLoader(id, isLoading) {
   }
 }
 
+async function getImageElement(src) {
+  // https://stackoverflow.com/a/60971078
+  // https://stackoverflow.com/a/64747517
+  const imageElement = new Image();
+  imageElement.src = src;
+  await imageElement.decode();
+  return {
+    width: imageElement.width,
+    height: imageElement.height,
+  };
+}
+
+// calculate the edges of the image, in coordinate space
+async function getBounds(map) {
+  const src = $(`#${map._container.id}`).attr('img-src');
+  const imageElement = await getImageElement(src);
+  const maxBoundHeight = map.unproject([0, imageElement.height], map.getMaxZoom() - 1);
+  const maxBoundWidth = map.unproject([imageElement.width, 0], map.getMaxZoom() - 1);
+  return new L.LatLngBounds(maxBoundHeight, maxBoundWidth);
+}
+
+export async function centeringMap(map) {
+  const bounds = await getBounds(map);
+  const mapId = map._container.id;
+
+  const maxY = bounds._southWest.lat;
+  const maxX = bounds._northEast.lng;
+  const mapContainerHeight = $(`#${mapId}`).innerHeight();
+  const mapContainerWidth = $(`#${mapId}`).innerWidth();
+  const mapContainerHeightUnproject = map.unproject(
+    [0, mapContainerHeight],
+    map.getMaxZoom() - 1,
+  ).lat;
+  const mapContainerWidthUnproject = map.unproject(
+    [mapContainerWidth, 0],
+    map.getMaxZoom() - 1,
+  ).lng;
+  const centerY = (maxY / 2) - (mapContainerHeightUnproject / 2);
+  const centerX = (maxX / 2) - (mapContainerWidthUnproject / 2);
+  const minZoomRecalculate = (mapContainerWidthUnproject / maxX) * 4.4;
+  map.options.minZoom = minZoomRecalculate;
+  map.setView(new L.LatLng(centerY, centerX), minZoomRecalculate);
+}
+
 export function initInteractiveMap(id) {
   interactiveMapAddOnsPositionAndClearSearch(id);
 
   const interactiveMap = id ? $(`#${id}${INTERACTIVE_MAP}`) : $(INTERACTIVE_MAP_NOTES);
   if (interactiveMap) {
-    interactiveMap.each(function eachInteractiveMap() {
+    interactiveMap.each(async function eachInteractiveMap() {
       // https://codepen.io/joelf/pen/bjdMww
       // Using leaflet.js to pan and zoom a big image.
       // See also: http://kempe.net/blog/2014/06/14/leaflet-pan-zoom-image.html
@@ -133,47 +182,35 @@ export function initInteractiveMap(id) {
       }
 
       // dimensions of the image map
-      const mapImageElement = new Image();
-      mapImageElement.src = mapImage;
+      const minZoom = 1.4;
+      const maxZoom = parseFloat($(this).attr('max-zoom') || 4);
+      const zoom = minZoom;
 
-      // image finish loading
-      // https://stackoverflow.com/a/60971078
-      mapImageElement.decode().then(() => {
-        const mapWidth = mapImageElement.width;
-        const mapHeight = mapImageElement.height;
-
-        const minZoom = parseFloat($(this).attr('min-zoom') || 2.25);
-        const maxZoom = parseFloat($(this).attr('max-zoom') || 4);
-        const zoom = parseFloat($(this).attr('zoom') || 2.25);
-
-        const map = L.map(mapId, {
-          minZoom,
-          maxZoom,
-          zoom,
-          // center: [mapHeight / 2, mapWidth / 2],
-          center: [0, 0],
-          crs: L.CRS.Simple,
-          zoomControl: false,
-        });
-        initiatedMaps.push(map);
-
-        // zoom control
-        L.control.zoom({
-          position: 'topright',
-        }).addTo(map);
-
-        // calculate the edges of the image, in coordinate space
-        const southWest = map.unproject([0, mapHeight], map.getMaxZoom() - 1);
-        const northEast = map.unproject([mapWidth, 0], map.getMaxZoom() - 1);
-        const bounds = new L.LatLngBounds(southWest, northEast);
-
-        // add the image overlay,
-        // so that it covers the entire map
-        L.imageOverlay(mapImage, bounds).addTo(map);
-
-        // tell leaflet that the map is exactly as big as the image
-        map.setMaxBounds(bounds);
+      const map = L.map(mapId, {
+        minZoom,
+        maxZoom,
+        zoom,
+        center: [0, 0],
+        crs: L.CRS.Simple,
+        zoomControl: false,
       });
+      initiatedMaps.push(map);
+
+      // zoom control
+      L.control.zoom({
+        position: 'topright',
+      }).addTo(map);
+
+      // add the image overlay,
+      // so that it covers the entire map
+      const bounds = await getBounds(map);
+      L.imageOverlay(mapImage, bounds).addTo(map);
+
+      // tell leaflet that the map is exactly as big as the image
+      map.setMaxBounds(bounds);
+
+      // centering map
+      centeringMap(map);
     });
   }
 }
@@ -182,7 +219,7 @@ export function markMap({
   id, title, position, content, icon, color,
 }) {
   if (initiatedMaps.length) {
-    const existingMap = initiatedMaps.find((map) => id === map._container.id);
+    const existingMap = getExistingMap(id);
     const iconMarker = {
       icon: L.divIcon({
         className: `icon-marker ${color}`,

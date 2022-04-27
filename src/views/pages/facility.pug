@@ -13,11 +13,9 @@ block content
         h3.text-green.mb-4 Interactive 2D Map
         .interactive-map-wrapper
           #pik-map.interactive-map.stretch-no-gutter(
-            min-zoom="2.25"
-            zoom="2.25"
             max-zoom="4"
             img-src="assets/images/content/interactive-map.jpg"
-            background-color="#000"
+            background-color="#b4f4ff"
           )
             .interactive-map-loader
               .loader
@@ -49,6 +47,10 @@ block content
               img(src="assets/images/banner/building.jpg" alt="Building")
 block scripts
   script.
+    //- feel free to investigate the code here:
+    //- https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/scripts/interactive-map.js
+    //- function which can be used here: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/app-global.js
+    //- global.<the function>
     const mapId = 'pik-map';
     global.initInteractiveMap(mapId);
 
@@ -56,7 +58,7 @@ block scripts
       if (event.key === 'Enter' || event.keyCode === '13') {
         global.clearMapMarkers(mapId);
 
-        //- testing purposes - give loader
+        //- demo purposes - give loader
         global.mapToggleLoader(mapId, true);
         setTimeout(() => {
           global.mapToggleLoader(mapId, false);
@@ -66,36 +68,47 @@ block scripts
           global.markMap({
             id: mapId,
             title: el.value,
-            position: [-60, 100],
+            position: [-260, 300],
             //- position: [0, 100],
             content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
-            // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
+            //- icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
             icon: 'ip-golf',
-            // color: <optional> green | blue
+            //- color: <optional> green | blue
             color: 'green',
           });
 
           global.markMap({
             id: mapId,
             title: `${el.value}2`,
-            position: [-70, 110],
+            position: [-270, 310],
             //- position: [0, 100],
             content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
             // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
             icon: 'ip-mosque',
-            // color: <optional> green | blue
+            //- color: <optional> green | blue
             color: 'blue',
           });
 
           global.markMap({
             id: mapId,
             title: `${el.value}3`,
-            position: [-80, 120],
+            position: [-280, 420],
             //- position: [0, 100],
             content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
-            // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
+            //- icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
             icon: 'ip-library',
           });
         }
+
+        //- demo purposes
+        //- get the map & use leaflet for position
+        //- https://leafletjs.com/reference.html
+        //- https://github.com/yafred/leaflet-responsive-popup#readme
+        //- https://leafletjs.com/examples/crs-simple/crs-simple.html
+        const map = global.getExistingMap('pik-map');
+        // centering map - FE custom function
+        global.centeringMap(map);
+        //- or manually add your own LatLng
+        // map.setView(new L.LatLng(-150, 1000));
       }
     }

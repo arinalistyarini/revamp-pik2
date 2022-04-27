@@ -15,6 +15,12 @@
           "modules": "./node_modules"
         }
       }
+    ],
+    [
+      "@babel/transform-runtime",
+      {
+        "regenerator": true
+      }
     ]
   ]
 }

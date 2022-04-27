@@ -3,6 +3,8 @@ import {
   markMap,
   clearMapMarkers,
   mapToggleLoader,
+  getExistingMap,
+  centeringMap,
 } from './assets/scripts/interactive-map';
 
 export {
@@ -10,4 +12,6 @@ export {
   initInteractiveMap,
   clearMapMarkers,
   mapToggleLoader,
+  getExistingMap,
+  centeringMap,
 };

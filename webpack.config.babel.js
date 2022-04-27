@@ -229,6 +229,7 @@ export default (env) => {
         jQuery: 'jquery',
         'window.$': 'jquery',
         'window.jQuery': 'jquery',
+        L: 'leaflet',
       }),
 
       new WebpackNotifierPlugin({
