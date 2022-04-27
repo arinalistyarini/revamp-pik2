@@ -26,6 +26,9 @@ $slick-arrow-color: $color !default;
 @import '~modules/slick-carousel/slick/slick.scss';
 @import '~modules/slick-carousel/slick/slick-theme.scss';
 @import '~modules/magnific-popup/src/css/main.scss';
+@import './vendor/leaflet.scss';
+@import './vendor/leaflet.responsive.popup.css';
+@import './vendor/leaflet.responsive.popup.rtl.css';
 
 /*
   Utils
@@ -51,6 +54,7 @@ $slick-arrow-color: $color !default;
 @import './components/card-square';
 @import './components/table-pik';
 @import './components/collapsible-list';
+@import './components/interactive-map';
 
 /*
   Layout

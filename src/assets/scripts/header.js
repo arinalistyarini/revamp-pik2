@@ -14,25 +14,32 @@ export function giveStandardHeader() {
 }
 
 function markParentMenu() {
-  $('.nav-item').each(function getEachNavItem() {
-    const doesHaveChildMenu = !!$(this).find('.child-wrapper').length;
-    if (doesHaveChildMenu) {
-      $(this).addClass('has-child');
-    }
-  });
+  if ($('.nav-item')) {
+    $('.nav-item').each(function getEachNavItem() {
+      const doesHaveChildMenu = !!$(this).find('.child-wrapper').length;
+      if (doesHaveChildMenu) {
+        $(this).addClass('has-child');
+      }
+    });
+  }
 }
 
+// -- SCROLL
 export function killBody() {
   $('body').css({
     overflow: 'hidden',
     height: '100vh',
   });
 
-  $('.map-content').each(function getMap() {
-    $(this).css({
-      display: 'none',
+  if ($('.map-content')) {
+    $('.map-content').each(function getMap() {
+      $(this).css({
+        display: 'none',
+      });
     });
-  });
+  }
+
+  $('body').bind('touchmove', (event) => { event.preventDefault(); });
 }
 
 export function reviveBody() {
@@ -41,12 +48,18 @@ export function reviveBody() {
     height: 'auto',
   });
 
-  $('.map-content').each(function getMap() {
-    $(this).css({
-      display: 'block',
+  if ($('.map-content')) {
+    $('.map-content').each(function getMap() {
+      $(this).css({
+        display: 'block',
+      });
     });
-  });
+  }
+
+  $('body').unbind('touchmove');
 }
+
+// -- END OF SCROLL
 
 export default function header() {
   giveStandardHeader();
@@ -60,6 +73,7 @@ export default function header() {
   // disable scroll on mobile
   // https://stackoverflow.com/q/37995824
   // https://stackoverflow.com/a/29842974
+  // https://stackoverflow.com/a/12090055
   $('.navbar-collapse').on('shown.bs.collapse', () => {
     killBody();
   });

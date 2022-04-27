@@ -11,8 +11,31 @@ block content
       section
         h2.text-dark-green.mb-4 FACILITY
         h3.text-green.mb-4 Interactive 2D Map
-        .map-content.stretch-no-gutter
-          iframe(width='100%' height='100%' style='border:0' loading='lazy' allowfullscreen)
+        .interactive-map-wrapper
+          #pik-map.interactive-map.stretch-no-gutter(
+            min-zoom="2.25"
+            zoom="2.25"
+            max-zoom="4"
+            img-src="assets/images/content/interactive-map.jpg"
+            background-color="#000"
+          )
+            .interactive-map-loader
+              .loader
+                .spinner
+                .spinner
+            .interactive-map-search
+              input(type="text" placeholder="Explore..." onkeydown="searchOnMap(this)")
+              .map-clear-search
+            .interactive-map-notes
+              .notes-item
+                .icon-wrapper
+                  i.icon-pik.ip-scroll-horizontal
+                span Hold + Slide to move
+              .notes-item
+                .icon-wrapper
+                  i.icon-pik.ip-scroll-vertical
+                span Scroll to Zoom in/out
+
       section.mt-5
         h3.text-green.mb-4 Virtual Tour
         .stretch-no-gutter
@@ -21,6 +44,58 @@ block content
       section.mt-5
         h3.text-green.mb-4 Video Facilities
         .pik-banner.full-height.ratio-5-2
-          a.banner-item.lightbox-item.lightbox-iframe.lightbox-video(href="https://www.youtube.com/watch?v=giN13SWKyoM&ab_channel=destinasiid")
+          a.banner-item.lightbox-item.lightbox-iframe.lightbox-video(href="https://www.youtube.com/watch?v=giN13SWKyoM")
             .banner-image
               img(src="assets/images/banner/building.jpg" alt="Building")
+block scripts
+  script.
+    const mapId = 'pik-map';
+    global.initInteractiveMap(mapId);
+
+    function searchOnMap(el) {
+      if (event.key === 'Enter' || event.keyCode === '13') {
+        global.clearMapMarkers(mapId);
+
+        //- testing purposes - give loader
+        global.mapToggleLoader(mapId, true);
+        setTimeout(() => {
+          global.mapToggleLoader(mapId, false);
+        }, 5000);
+
+        if (el.value) {
+          global.markMap({
+            id: mapId,
+            title: el.value,
+            position: [-60, 100],
+            //- position: [0, 100],
+            content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
+            // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
+            icon: 'ip-golf',
+            // color: <optional> green | blue
+            color: 'green',
+          });
+
+          global.markMap({
+            id: mapId,
+            title: `${el.value}2`,
+            position: [-70, 110],
+            //- position: [0, 100],
+            content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
+            // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
+            icon: 'ip-mosque',
+            // color: <optional> green | blue
+            color: 'blue',
+          });
+
+          global.markMap({
+            id: mapId,
+            title: `${el.value}3`,
+            position: [-80, 120],
+            //- position: [0, 100],
+            content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
+            // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
+            icon: 'ip-library',
+          });
+        }
+      }
+    }

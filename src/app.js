@@ -12,6 +12,7 @@ import 'magnific-popup';
 import header from './assets/scripts/header';
 import bannerSlider from './assets/scripts/banner-slider';
 import map from './assets/scripts/map';
+// import interactiveMap from './assets/scripts/interactive-map';
 import lightbox from './assets/scripts/lightbox';
 import thumbnailSlider from './assets/scripts/thumbnail-slider';
 import fullWidth from './assets/scripts/full-width';
@@ -25,6 +26,7 @@ $(() => {
   header();
   bannerSlider();
   map();
+  // interactiveMap();
   lightbox();
   thumbnailSlider();
   fullWidth();

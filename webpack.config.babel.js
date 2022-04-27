@@ -25,7 +25,7 @@ export default (env) => {
         const options = {
           filename: `${viewName}.html`,
           template: `views/pages/${view}`,
-          inject: true,
+          inject: false,
           minify: false,
         };
         allPages.push(new HtmlWebpackPlugin(options));
@@ -38,6 +38,7 @@ export default (env) => {
     context: _resolve(__dirname, './src'),
     entry: {
       app: './app.js',
+      client: ['expose-loader?global!./app-global.js'],
     },
     output: {
       path: _resolve(__dirname, './dist'),
@@ -92,12 +93,6 @@ export default (env) => {
           use: [
             nodeEnv === 'development' ? 'style-loader' : {
               loader: _loader,
-              // options: {
-              //   publicPath: (url) => {
-              //     console.log('mini-css-loader wakaka opo toh ', url);
-              //     return `${url}`;
-              //   },
-              // },
             },
             {
               loader: 'css-loader',
@@ -171,7 +166,8 @@ export default (env) => {
           default: false,
           vendors: false,
           vendor: {
-            filename: 'assets/js/vendor.b949cbc.bundle.js',
+            name: 'vendor',
+            filename: 'assets/js/[name].b949cbc.bundle.js',
             chunks: 'all',
             test: /node_modules/,
           },
@@ -208,8 +204,9 @@ export default (env) => {
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: 'views/index.pug',
-        inject: true,
+        inject: false,
         minify: false,
+        chunk: ['client'],
       }),
 
       // pages/ folder

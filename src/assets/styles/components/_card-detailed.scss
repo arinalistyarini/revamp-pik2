@@ -215,5 +215,39 @@
     .card-info-detail {
       margin: 0 12px;
     }
+
+    .column-title {
+      .text-title {
+        width: calc(100% - 100px);
+      }
+
+      .column-logo {
+        height: auto;
+        width: 100px;
+
+        .img-wrapper {
+          display: flex;
+          align-items: center;
+
+          &.fill-height,
+          &.fill-width {
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 480px) {
+  .card-detailed {
+    .card-content {
+      .text-wrapper {
+        padding: 24px 16px;
+      }
+    }
   }
 }

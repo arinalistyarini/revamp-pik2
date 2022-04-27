@@ -2781,6 +2781,11 @@ expand-tilde@^2.0.0, expand-tilde@^2.0.2:
   dependencies:
     homedir-polyfill "^1.0.1"
 
+expose-loader@0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/expose-loader/-/expose-loader-0.7.5.tgz#e29ea2d9aeeed3254a3faa1b35f502db9f9c3f6f"
+  integrity sha512-iPowgKUZkTPX5PznYsmifVj9Bob0w2wTHVkt/eYNPSzyebkUgIedmskf/kcfEIWpiWjg3JRjnW+a17XypySMuw==
+
 express@^4.17.1:
   version "4.17.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
@@ -4232,6 +4237,16 @@ lcid@^2.0.0:
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
   dependencies:
     invert-kv "^2.0.0"
+
+leaflet-responsive-popup@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/leaflet-responsive-popup/-/leaflet-responsive-popup-0.6.4.tgz#b93d9368ef9f96d6dc911cf5b96d90e08601c6b3"
+  integrity sha512-2D8G9aQA6NHkulDBPN9kqbUCkCpWQQ6dF0xFL11AuEIWIbsL4UC/ZPP5m8GYM0dpU6YTlmyyCh1Tz+cls5Q4dg==
+
+leaflet@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.7.0.tgz#896d4fefaf781eff9387e63a84ad93ebe99f3490"
+  integrity sha512-92v1ihuLMv0W0EWe/RCO8equfYijsoQB0RKDxUxYHy/BjKnP5s2XFkHU4JzKJGRjJUKex4em/C+FRxBjXpW+kg==
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"

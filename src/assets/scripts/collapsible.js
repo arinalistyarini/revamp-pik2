@@ -5,9 +5,11 @@ function toClickedPosition(element) {
 }
 
 export default function collapsible() {
-  $('.collapsible-item').each(function getEachCollapsible() {
-    $(this).on('shown.bs.collapse', function onOpened() {
-      toClickedPosition(this);
+  if ($('.collapsible-item')) {
+    $('.collapsible-item').each(function getEachCollapsible() {
+      $(this).on('shown.bs.collapse', function onOpened() {
+        toClickedPosition(this);
+      });
     });
-  });
+  }
 }

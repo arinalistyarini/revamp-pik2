@@ -1,11 +1,29 @@
-.logo-investment {
-  width: 350px;
-  margin: 0 auto;
+.investment-opportunity-page {
+  .logo-investment {
+    width: 350px;
+    margin: 0 auto;
+  }
+  
+  .column-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+  }
 }
 
-.column-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 18px;
+@media (max-width: 480px) {
+  .investment-opportunity-page {
+    .logo-investment {
+      max-width: 240px;
+    }
+  
+    .column-nav {
+      display: block;
+  
+      .btn-see-more {
+        padding-top: 8px;
+      }
+    }
+  }
 }

@@ -3,6 +3,7 @@ import bannerSlider from './banner-slider';
 import thumbnailSlider from './thumbnail-slider';
 import fullWidth from './full-width';
 import imageCover from './image-cover';
+import { interactiveMapAddOnsPositionAndClearSearch } from './interactive-map';
 
 // https://stackoverflow.com/a/4541963
 const eventOnFinish = (function finishEvent() {
@@ -19,15 +20,23 @@ const eventOnFinish = (function finishEvent() {
   };
 }());
 
+let previousWindowWidth = $(window).width();
+
 export default function onResize() {
-  $(window).on('resize', () => {
-    eventOnFinish(() => {
-      giveStandardHeader();
-      bannerSlider();
-      thumbnailSlider();
-      fullWidth();
-      imageCover();
-      reviveBody();
-    }, 200, 'windowOnResize');
+  $(window).on('resize', function resizingWindow() {
+    const currentWindowWidth = $(this).width();
+    if (previousWindowWidth !== currentWindowWidth) {
+      eventOnFinish(() => {
+        giveStandardHeader();
+        bannerSlider();
+        thumbnailSlider();
+        fullWidth();
+        imageCover();
+        reviveBody();
+        interactiveMapAddOnsPositionAndClearSearch();
+      }, 200, 'windowOnResize');
+
+      previousWindowWidth = $(this).width();
+    }
   });
 }

@@ -206,4 +206,114 @@
     mask-size: cover;
     -webkit-mask-size: cover;
   }
+
+  &.ip-church {
+    width: 14px;
+    height: 16px;
+    background-size: 14px 16px;
+    mask: url('~icons/church.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/church.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-golf {
+    width: 10px;
+    height: 17px;
+    background-size: 10px 17px;
+    mask: url('~icons/golf.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/golf.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-golf {
+    width: 10px;
+    height: 17px;
+    background-size: 10px 17px;
+    mask: url('~icons/golf.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/golf.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-library {
+    width: 15px;
+    height: 16px;
+    background-size: 15px 16px;
+    mask: url('~icons/library.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/library.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-mosque {
+    width: 16px;
+    height: 13px;
+    background-size: 16px 13px;
+    mask: url('~icons/mosque.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/mosque.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-school {
+    width: 18px;
+    height: 16px;
+    background-size: 18px 16px;
+    mask: url('~icons/school.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/school.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-swimming-pool {
+    width: 16px;
+    height: 17px;
+    background-size: 16px 17px;
+    mask: url('~icons/swimming-pool.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/swimming-pool.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-tree {
+    width: 15px;
+    height: 18px;
+    background-size: 15px 18px;
+    mask: url('~icons/tree.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/tree.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-tree {
+    width: 18px;
+    height: 16px;
+    background-size: 18px 16px;
+    mask: url('~icons/tree.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/tree.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-scroll-vertical {
+    width: 10px;
+    height: 22px;
+    background-size: 10px 22px;
+    mask: url('~icons/scroll-vertical.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/scroll-vertical.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+
+  &.ip-scroll-horizontal {
+    width: 23px;
+    height: 10px;
+    background-size: 23px 10px;
+    mask: url('~icons/scroll-horizontal.svg') no-repeat 100% 100%;
+    -webkit-mask: url('~icons/scroll-horizontal.svg') no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
 }
