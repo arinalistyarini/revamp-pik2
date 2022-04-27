@@ -28,67 +28,6 @@ export function clearMapMarkers(id) {
   }
 }
 
-// re-position search & notes
-export function interactiveMapAddOnsPositionAndClearSearch(id) {
-  const notes = id ? $(`#${id}`).find(INTERACTIVE_MAP_NOTES) : $(INTERACTIVE_MAP_NOTES);
-  if (notes) {
-    notes.each(function eachNote() {
-      const note = $(this);
-      const noteMapWrapper = note.parents(INTERACTIVE_MAP).length
-        ? note.parents(INTERACTIVE_MAP)
-        : notes.prev(INTERACTIVE_MAP);
-
-      // smaller viewport
-      if ($(window).width() <= WIDTH_BREAKPOINT) {
-        if (note.length && noteMapWrapper) {
-          noteMapWrapper.after(note);
-        }
-      } else if (note.length && noteMapWrapper) {
-        note.appendTo(noteMapWrapper);
-      }
-    });
-  }
-
-  const searches = id ? $(`#${id}`).find(INTERACTIVE_MAP_SEARCHES) : $(INTERACTIVE_MAP_SEARCHES);
-  if (searches) {
-    searches.each(function eachSearch() {
-      const search = $(this);
-      const searchMapWrapper = search.parents(INTERACTIVE_MAP).length
-        ? search.parents(INTERACTIVE_MAP)
-        : search.next(INTERACTIVE_MAP);
-
-      // smaller viewport
-      if ($(window).width() <= WIDTH_BREAKPOINT) {
-        if (search.length && searchMapWrapper) {
-          searchMapWrapper.before(search);
-        }
-      } else if (search.length && searchMapWrapper) {
-        search.prependTo(searchMapWrapper);
-      }
-
-      // -- search
-      const searchInput = search.find('input');
-      const searchEraser = search.find('.map-clear-search');
-      if (searchInput.length) {
-        searchInput.on('input', function searchOnInput() {
-          if (this.value) {
-            searchEraser.addClass('shown');
-          } else {
-            searchEraser.removeClass('shown');
-          }
-        });
-      }
-      searchEraser.on('click', () => {
-        if (searchInput.val()) {
-          searchInput.val('');
-          searchEraser.removeClass('shown');
-          clearMapMarkers(id);
-        }
-      });
-    });
-  }
-}
-
 export function mapToggleLoader(id, isLoading) {
   if (initiatedMaps.length) {
     const selectedMap = getExistingMap(id);
@@ -158,6 +97,68 @@ export async function centeringMap(map) {
   const minZoomRecalculate = (mapContainerWidthUnproject / maxX) * 4.4;
   map.options.minZoom = minZoomRecalculate;
   map.setView(new L.LatLng(centerY, centerX), minZoomRecalculate);
+}
+
+// re-position search & notes
+export function interactiveMapAddOnsPositionAndClearSearch(id) {
+  const notes = id ? $(`#${id}`).find(INTERACTIVE_MAP_NOTES) : $(INTERACTIVE_MAP_NOTES);
+  if (notes) {
+    notes.each(function eachNote() {
+      const note = $(this);
+      const noteMapWrapper = note.parents(INTERACTIVE_MAP).length
+        ? note.parents(INTERACTIVE_MAP)
+        : notes.prev(INTERACTIVE_MAP);
+
+      // smaller viewport
+      if ($(window).width() <= WIDTH_BREAKPOINT) {
+        if (note.length && noteMapWrapper) {
+          noteMapWrapper.after(note);
+        }
+      } else if (note.length && noteMapWrapper) {
+        note.appendTo(noteMapWrapper);
+      }
+    });
+  }
+
+  const searches = id ? $(`#${id}`).find(INTERACTIVE_MAP_SEARCHES) : $(INTERACTIVE_MAP_SEARCHES);
+  if (searches) {
+    searches.each(function eachSearch() {
+      const search = $(this);
+      const searchMapWrapper = search.parents(INTERACTIVE_MAP).length
+        ? search.parents(INTERACTIVE_MAP)
+        : search.next(INTERACTIVE_MAP);
+
+      // smaller viewport
+      if ($(window).width() <= WIDTH_BREAKPOINT) {
+        if (search.length && searchMapWrapper) {
+          searchMapWrapper.before(search);
+        }
+      } else if (search.length && searchMapWrapper) {
+        search.prependTo(searchMapWrapper);
+      }
+
+      // -- search
+      const searchInput = search.find('input');
+      const searchEraser = search.find('.map-clear-search');
+      if (searchInput.length) {
+        searchInput.on('input', function searchOnInput() {
+          if (this.value) {
+            searchEraser.addClass('shown');
+          } else {
+            searchEraser.removeClass('shown');
+          }
+        });
+      }
+      searchEraser.on('click', () => {
+        if (searchInput.val()) {
+          searchInput.val('');
+          searchEraser.removeClass('shown');
+          clearMapMarkers(id);
+          centeringMap(getExistingMap(id));
+        }
+      });
+    });
+  }
 }
 
 export function initInteractiveMap(id) {
