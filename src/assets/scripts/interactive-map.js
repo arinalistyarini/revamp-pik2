@@ -4,7 +4,9 @@
 import L from 'leaflet';
 import 'leaflet-responsive-popup';
 
-const initiatedMaps = [];
+window.interactiveMap = {
+  initiated: [],
+};
 const INTERACTIVE_MAP = '.interactive-map';
 const INTERACTIVE_MAP_NOTES = '.interactive-map-notes';
 const INTERACTIVE_MAP_SEARCHES = '.interactive-map-search';
@@ -12,24 +14,27 @@ const INTERACTIVE_MAP_LOADER = '.interactive-map-loader';
 const INTERACTIVE_MAP_REQUEST = '.interactive-map-request';
 const WIDTH_BREAKPOINT = 991;
 
-function getMapId(map) {
+export function getMapId(map) {
+  if ($(map._container).attr('id')) $(map._container).attr('id');
   return map._container.id;
 }
 
 export function getExistingMap(id) {
-  return initiatedMaps.find((map) => id === getMapId(map));
+  return window.interactiveMap.initiated.find((map) => id === getMapId(map));
 }
 
 export function clearMapMarkers(id) {
-  if (initiatedMaps.length) {
+  if (window.interactiveMap.initiated.length) {
     const existingMap = getExistingMap(id);
 
     // https://stackoverflow.com/a/62545611
-    existingMap.eachLayer((layer) => {
-      if (layer._popup) {
-        layer.remove();
-      }
-    });
+    if (existingMap) {
+      existingMap.eachLayer((layer) => {
+        if (layer._popup) {
+          layer.remove();
+        }
+      });
+    }
   }
 }
 
@@ -69,7 +74,7 @@ export function mapShowRequest(requestText) {
 }
 
 export function mapToggleLoader(id, isLoading, isSolid) {
-  if (initiatedMaps.length) {
+  if (window.interactiveMap.initiated.length) {
     const mapDOM = $(`#${id}`);
     const loader = mapDOM.find(INTERACTIVE_MAP_LOADER);
     const selectedMap = getExistingMap(id);
@@ -221,8 +226,6 @@ export function interactiveMapAddOnsPositionAndClearSearch(id) {
 }
 
 export function initInteractiveMap(id) {
-  interactiveMapAddOnsPositionAndClearSearch(id);
-
   const interactiveMap = id ? $(`#${id}${INTERACTIVE_MAP}`) : $(INTERACTIVE_MAP);
   if (interactiveMap) {
     interactiveMap.each(async function eachInteractiveMap() {
@@ -232,6 +235,8 @@ export function initInteractiveMap(id) {
       // but bound use this comment: http://disq.us/p/1c32atj
 
       const mapId = $(this).attr('id');
+      interactiveMapAddOnsPositionAndClearSearch(id || mapId);
+
       const mapImgSrc = $(this).attr('img-src');
       const backgroundColor = $(this).attr('background-color');
 
@@ -256,9 +261,9 @@ export function initInteractiveMap(id) {
         crs: L.CRS.Simple,
         zoomControl: false,
       });
-      initiatedMaps.push(map);
+      window.interactiveMap.initiated.push(map);
 
-      mapToggleLoader(id, true, true);
+      mapToggleLoader(id || getMapId(map), true, true);
 
       // zoom control
       L.control.zoom({
@@ -280,7 +285,9 @@ export function initInteractiveMap(id) {
         resolve();
       }, delay));
       await waitForCenteringMap(800);
-      mapToggleLoader(id, false);
+      setTimeout(() => {
+        mapToggleLoader(id || getMapId(map), false);
+      }, 400);
     });
   }
 }
@@ -304,7 +311,7 @@ export async function toggleCoordinateLog(map) {
 export function markMap({
   id, title, position, content, icon, color,
 }) {
-  if (initiatedMaps.length) {
+  if (window.interactiveMap.initiated.length) {
     const existingMap = getExistingMap(id);
     const iconMarker = {
       icon: L.divIcon({
@@ -330,4 +337,13 @@ export function markMap({
     ).addTo(existingMap)
       .bindPopup(iconPopup);
   }
+}
+
+export default function initGlobalInteractiveMap() {
+  window.global.initInteractiveMap();
+  window.interactiveMap.initiated.forEach((map) => {
+    window.global.getFactor(map).then((result) => {
+      window.interactiveMap.factor = result;
+    });
+  });
 }
