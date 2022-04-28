@@ -9,6 +9,7 @@ const INTERACTIVE_MAP = '.interactive-map';
 const INTERACTIVE_MAP_NOTES = '.interactive-map-notes';
 const INTERACTIVE_MAP_SEARCHES = '.interactive-map-search';
 const INTERACTIVE_MAP_LOADER = '.interactive-map-loader';
+const INTERACTIVE_MAP_REQUEST = '.interactive-map-request';
 const WIDTH_BREAKPOINT = 991;
 
 function getMapId(map) {
@@ -32,28 +33,53 @@ export function clearMapMarkers(id) {
   }
 }
 
+function toggleMapOperation(map, isEnabled) {
+  const mapDOM = $(`#${getMapId(map)}`);
+  const search = mapDOM.find(`${INTERACTIVE_MAP_SEARCHES}`).length
+    ? mapDOM.find(`${INTERACTIVE_MAP_SEARCHES}`)
+    : mapDOM.prev(INTERACTIVE_MAP_SEARCHES);
+  const searchInput = search.find('input');
+  if (isEnabled) {
+    map._handlers.forEach((handler) => {
+      handler.enable();
+    });
+    searchInput.removeAttr('disabled');
+  } else {
+    map._handlers.forEach((handler) => {
+      handler.disable();
+    });
+    searchInput.attr('disabled', true);
+  }
+}
+
+export function mapShowRequest(requestText) {
+  if ($(INTERACTIVE_MAP)) {
+    $(INTERACTIVE_MAP).each(function eachMap() {
+      const mapId = $(this).attr('id');
+      const map = window.global.getExistingMap(mapId);
+
+      const request = $(this).find(INTERACTIVE_MAP_REQUEST);
+      if (request.length) {
+        request.addClass('shown');
+        toggleMapOperation(map, false);
+        request.find('.text-request').text(requestText);
+      }
+    });
+  }
+}
+
 export function mapToggleLoader(id, isLoading, isSolid) {
   if (initiatedMaps.length) {
-    const selectedMap = getExistingMap(id);
     const mapDOM = $(`#${id}`);
     const loader = mapDOM.find(INTERACTIVE_MAP_LOADER);
-    const search = mapDOM.find(`${INTERACTIVE_MAP_SEARCHES}`).length
-      ? mapDOM.find(`${INTERACTIVE_MAP_SEARCHES}`)
-      : mapDOM.prev(INTERACTIVE_MAP_SEARCHES);
-    const searchInput = search.find('input');
+    const selectedMap = getExistingMap(id);
     if (loader.length) {
       if (isLoading) {
         loader.addClass('shown');
-        selectedMap._handlers.forEach((handler) => {
-          handler.disable();
-        });
-        searchInput.attr('disabled', true);
+        toggleMapOperation(selectedMap, false);
       } else {
         loader.removeClass('shown');
-        selectedMap._handlers.forEach((handler) => {
-          handler.enable();
-        });
-        searchInput.removeAttr('disabled');
+        toggleMapOperation(selectedMap, true);
       }
     }
 

@@ -3,7 +3,7 @@ import bannerSlider from './banner-slider';
 import thumbnailSlider from './thumbnail-slider';
 import fullWidth from './full-width';
 import imageCover from './image-cover';
-import { interactiveMapAddOnsPositionAndClearSearch } from './interactive-map';
+import { interactiveMapAddOnsPositionAndClearSearch, mapShowRequest } from './interactive-map';
 
 // https://stackoverflow.com/a/4541963
 const eventOnFinish = (function finishEvent() {
@@ -34,6 +34,7 @@ export default function onResize() {
         imageCover();
         reviveBody();
         interactiveMapAddOnsPositionAndClearSearch();
+        mapShowRequest('Please refresh page');
       }, 200, 'windowOnResize');
 
       previousWindowWidth = $(this).width();
