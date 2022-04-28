@@ -6,7 +6,6 @@ import {
   getExistingMap,
   centeringMap,
   toggleCoordinateLog,
-  getFactor,
 } from './assets/scripts/interactive-map';
 
 export {
@@ -17,5 +16,4 @@ export {
   getExistingMap,
   centeringMap,
   toggleCoordinateLog,
-  getFactor,
 };

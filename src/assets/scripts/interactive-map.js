@@ -4,9 +4,7 @@
 import L from 'leaflet';
 import 'leaflet-responsive-popup';
 
-window.interactiveMap = {
-  initiated: [],
-};
+const initiatedMaps = [];
 const INTERACTIVE_MAP = '.interactive-map';
 const INTERACTIVE_MAP_NOTES = '.interactive-map-notes';
 const INTERACTIVE_MAP_SEARCHES = '.interactive-map-search';
@@ -20,11 +18,11 @@ export function getMapId(map) {
 }
 
 export function getExistingMap(id) {
-  return window.interactiveMap.initiated.find((map) => id === getMapId(map));
+  return initiatedMaps.find((map) => id === getMapId(map));
 }
 
 export function clearMapMarkers(id) {
-  if (window.interactiveMap.initiated.length) {
+  if (initiatedMaps.length) {
     const existingMap = getExistingMap(id);
 
     // https://stackoverflow.com/a/62545611
@@ -74,7 +72,7 @@ export function mapShowRequest(requestText) {
 }
 
 export function mapToggleLoader(id, isLoading, isSolid) {
-  if (window.interactiveMap.initiated.length) {
+  if (initiatedMaps.length) {
     const mapDOM = $(`#${id}`);
     const loader = mapDOM.find(INTERACTIVE_MAP_LOADER);
     const selectedMap = getExistingMap(id);
@@ -261,7 +259,7 @@ export function initInteractiveMap(id) {
         crs: L.CRS.Simple,
         zoomControl: false,
       });
-      window.interactiveMap.initiated.push(map);
+      initiatedMaps.push(map);
 
       mapToggleLoader(id || getMapId(map), true, true);
 
@@ -296,22 +294,16 @@ export async function toggleCoordinateLog(map) {
   const factor = await getFactor(map);
   map.on('click', (ev) => {
     console.log({
-      original: {
-        ...ev.latlng,
-        factor,
-      },
-      recomputed: {
-        lat: ev.latlng.lat / factor,
-        lng: ev.latlng.lng / factor,
-      },
+      lat: ev.latlng.lat / factor,
+      lng: ev.latlng.lng / factor,
     });
   });
 }
 
-export function markMap({
+export async function markMap({
   id, title, position, content, icon, color,
 }) {
-  if (window.interactiveMap.initiated.length) {
+  if (initiatedMaps.length) {
     const existingMap = getExistingMap(id);
     const iconMarker = {
       icon: L.divIcon({
@@ -331,8 +323,9 @@ export function markMap({
       closeButton: false,
     }).setContent(`${popupTitle}${popupContent}`);
 
+    const factor = await getFactor(getExistingMap(id));
     L.marker(
-      position,
+      [position[0] * factor, position[1] * factor],
       icon ? iconMarker : null,
     ).addTo(existingMap)
       .bindPopup(iconPopup);
@@ -341,9 +334,4 @@ export function markMap({
 
 export default function initGlobalInteractiveMap() {
   window.global.initInteractiveMap();
-  window.interactiveMap.initiated.forEach((map) => {
-    window.global.getFactor(map).then((result) => {
-      window.interactiveMap.factor = result;
-    });
-  });
 }

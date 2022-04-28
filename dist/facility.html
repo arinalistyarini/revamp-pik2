@@ -215,23 +215,14 @@
       //- global.toggleCoordinateLog(global.getExistingMap('pik-map'));
       //- and then click on the map, it will show:
       //- {
-      //-   "original": {
-      //-     "lat": ...,
-      //-     "lng": ...,
-      //-     "factor": ...,
-      //-   },
-      //-   "recomputed": {
-      //-     "lat": ...,
-      //-     "lng": ...,
-      //-   }
+      //-   "lat": ...,
+      //-   "lng": ...,
       //- }
       //- to put in DB, please use the recomputed.lat & recomputed.lng
       //- recomputed is the original lat/lng then / factor
       //- can be seen here: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/scripts/interactive-map.js
       //- in function global.markMap({...}) (function to give mark); in 'position' object, please put:
-      //- position: [recomputed.lat * window.interactiveMap.factor, recomputed.lng * window.interactiveMap.factor]
-      //- don't forget the window.interactiveMap.factor, because if window.interactiveMap.factor is not used -->
-      //- ---> different map width (viewport) will have different marker position
+      //- position: [recomputed.lat, recomputed.lng]
       //- if it's still confusing, please read this comment: http://disq.us/p/1c32atj
 
       function searchOnMap(el) {
@@ -248,7 +239,7 @@
             global.markMap({
               id: mapId,
               title: `${el.value}`,
-              position: [2441.764682783224 * window.interactiveMap.factor, 1509.9127454936101 * window.interactiveMap.factor],
+              position: [2441.764682783224, 1509.9127454936101],
               content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
               // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
               icon: 'ip-mosque',
@@ -259,7 +250,7 @@
             global.markMap({
               id: mapId,
               title: `${el.value} yang ke dua`,
-              position: [1856.5098282538115 * window.interactiveMap.factor, 2294.1459621819527 * window.interactiveMap.factor],
+              position: [1856.5098282538115, 2294.1459621819527],
               content: 'Dua Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
               //- icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
               icon: 'ip-library',
@@ -268,7 +259,7 @@
             global.markMap({
               id: mapId,
               title: `${el.value} yang ke tiga`,
-              position: [1651.4492068609559 * window.interactiveMap.factor, 1813.90032784714 * window.interactiveMap.factor],
+              position: [1651.4492068609559, 1813.90032784714],
               content: 'Dua Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
               //- icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
               icon: 'ip-golf',
