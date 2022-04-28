@@ -197,7 +197,7 @@ export function interactiveMapAddOnsPositionAndClearSearch(id) {
 export function initInteractiveMap(id) {
   interactiveMapAddOnsPositionAndClearSearch(id);
 
-  const interactiveMap = id ? $(`#${id}${INTERACTIVE_MAP}`) : $(INTERACTIVE_MAP_NOTES);
+  const interactiveMap = id ? $(`#${id}${INTERACTIVE_MAP}`) : $(INTERACTIVE_MAP);
   if (interactiveMap) {
     interactiveMap.each(async function eachInteractiveMap() {
       // https://codepen.io/joelf/pen/bjdMww
