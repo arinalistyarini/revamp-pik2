@@ -108,7 +108,7 @@
           <h2 class="text-dark-green mb-4">FACILITY</h2>
           <h3 class="text-green mb-4">Interactive 2D Map</h3>
           <div class="interactive-map-wrapper">
-            <div class="interactive-map stretch-no-gutter" id="pik-map" max-zoom="4" img-src="assets/images/content/interactive-map.jpg" background-color="#b4f4ff">
+            <div class="interactive-map stretch-no-gutter" id="pik-map" img-src="assets/images/content/interactive-map.jpg" background-color="#b4f4ff">
               <div class="interactive-map-loader">
                 <div class="loader">
                   <div class="spinner"></div>
@@ -202,8 +202,39 @@
       //- https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/scripts/interactive-map.js
       //- function which can be used here: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/app-global.js
       //- global.<the function>
-      const mapId = 'pik-map';
+      var mapId = 'pik-map';
+      var factor = 0.1;
       global.initInteractiveMap(mapId);
+      global.getFactor(global.getExistingMap('pik-map')).then(function(result) {
+        factor = result;
+      });
+
+      //- PLEASE READ BELOW FIRST FOR EASIER USED
+      //- no need to bruteforce the coordinate
+      //- firstly, zoooooooom the map *a must
+      //- in browser console (https://www.webucator.com/article/how-to-open-google-chromes-javascript-console/)
+      //- please insert this code:
+      //- global.toggleCoordinateLog(global.getExistingMap('pik-map'));
+      //- and then click on the map, it will show:
+      //- {
+      //-   "original": {
+      //-     "lat": ...,
+      //-     "lng": ...,
+      //-     "factor": ...,
+      //-   },
+      //-   "recomputed": {
+      //-     "lat": ...,
+      //-     "lng": ...,
+      //-   }
+      //- }
+      //- to put in DB, please use the recomputed.lat & recomputed.lng
+      //- recomputed is the original lat/lng then / factor
+      //- can be seen here: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/scripts/interactive-map.js
+      //- in function global.markMap({...}) (function to give mark); in 'position' object, please put:
+      //- position: [recomputed.lat * factor, recomputed.lng * factor]
+      //- don't forget the factor, because if factor is not used -->
+      //- ---> different map width (viewport) will have different marker position
+      //- if it's still confusing, please read this comment: http://disq.us/p/1c32atj
 
       function searchOnMap(el) {
         if (event.key === 'Enter' || event.keyCode === '13') {
@@ -213,26 +244,13 @@
           global.mapToggleLoader(mapId, true);
           setTimeout(() => {
             global.mapToggleLoader(mapId, false);
-          }, 5000);
+          }, 3000);
 
           if (el.value) {
             global.markMap({
               id: mapId,
-              title: el.value,
-              position: [-260, 300],
-              //- position: [0, 100],
-              content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
-              //- icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
-              icon: 'ip-golf',
-              //- color: <optional> green | blue
-              color: 'green',
-            });
-
-            global.markMap({
-              id: mapId,
-              title: `${el.value}2`,
-              position: [-270, 310],
-              //- position: [0, 100],
+              title: `${el.value}`,
+              position: [2441.764682783224 * factor, 1509.9127454936101 * factor],
               content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
               // icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
               icon: 'ip-mosque',
@@ -242,12 +260,22 @@
 
             global.markMap({
               id: mapId,
-              title: `${el.value}3`,
-              position: [-280, 420],
-              //- position: [0, 100],
-              content: 'Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
+              title: `${el.value} yang ke dua`,
+              position: [1856.5098282538115 * factor, 2294.1459621819527 * factor],
+              content: 'Dua Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
               //- icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
               icon: 'ip-library',
+            });
+
+            global.markMap({
+              id: mapId,
+              title: `${el.value} yang ke tiga`,
+              position: [1651.4492068609559 * factor, 1813.90032784714 * factor],
+              content: 'Dua Sekolah Alam adalah sebuah konsep pendidikan yang digagas<br><img src="assets/images/content/interactive-map.jpg" style="height:50px;">', // optional
+              //- icon list: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/styles/base/_icons.scss
+              icon: 'ip-golf',
+              //- color: <optional> green | blue
+              color: 'green',
             });
           }
 
@@ -256,11 +284,11 @@
           //- https://leafletjs.com/reference.html
           //- https://github.com/yafred/leaflet-responsive-popup#readme
           //- https://leafletjs.com/examples/crs-simple/crs-simple.html
-          const map = global.getExistingMap(mapId);
+          var map = global.getExistingMap(mapId);
           // centering map - FE custom function
           global.centeringMap(map);
           //- or manually add your own LatLng
-          // map.setView(new L.LatLng(-150, 1000));
+          // map.setView([lat, lng]);
         }
       }
 

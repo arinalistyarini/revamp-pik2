@@ -11,8 +11,12 @@ const INTERACTIVE_MAP_SEARCHES = '.interactive-map-search';
 const INTERACTIVE_MAP_LOADER = '.interactive-map-loader';
 const WIDTH_BREAKPOINT = 991;
 
+function getMapId(map) {
+  return map._container.id;
+}
+
 export function getExistingMap(id) {
-  return initiatedMaps.find((map) => id === map._container.id);
+  return initiatedMaps.find((map) => id === getMapId(map));
 }
 
 export function clearMapMarkers(id) {
@@ -28,7 +32,7 @@ export function clearMapMarkers(id) {
   }
 }
 
-export function mapToggleLoader(id, isLoading) {
+export function mapToggleLoader(id, isLoading, isSolid) {
   if (initiatedMaps.length) {
     const selectedMap = getExistingMap(id);
     const mapDOM = $(`#${id}`);
@@ -52,6 +56,12 @@ export function mapToggleLoader(id, isLoading) {
         searchInput.removeAttr('disabled');
       }
     }
+
+    if (isSolid) {
+      loader.addClass('solid');
+    } else {
+      loader.removeClass('solid');
+    }
   }
 }
 
@@ -67,36 +77,59 @@ async function getImageElement(src) {
   };
 }
 
+async function getMapImage(map) {
+  const mapId = getMapId(map);
+  const src = $(`#${mapId}`).attr('img-src');
+  const mapImage = await getImageElement(src);
+  return mapImage;
+}
+
+function getMapContainer(map) {
+  const mapId = getMapId(map);
+  return $(`#${mapId}`);
+}
+
+export async function getFactor(map) {
+  const mapImage = await getMapImage(map);
+  const mapContainer = getMapContainer(map);
+  const ratioMap = mapImage.width / mapImage.height;
+  const ratioContainer = mapContainer.innerWidth() / mapContainer.innerHeight();
+  const fillWidth = mapContainer.innerWidth() / mapImage.width;
+  const fillHeight = mapContainer.innerHeight() / mapImage.height;
+
+  if (ratioMap > ratioContainer) {
+    return fillHeight;
+  }
+
+  return fillWidth;
+}
+
 // calculate the edges of the image, in coordinate space
+// http://disq.us/p/1c32atj
 async function getBounds(map) {
-  const src = $(`#${map._container.id}`).attr('img-src');
-  const imageElement = await getImageElement(src);
-  const maxBoundHeight = map.unproject([0, imageElement.height], map.getMaxZoom() - 1);
-  const maxBoundWidth = map.unproject([imageElement.width, 0], map.getMaxZoom() - 1);
-  return new L.LatLngBounds(maxBoundHeight, maxBoundWidth);
+  const factor = await getFactor(map);
+  const mapImage = await getMapImage(map);
+  const bounds = [[0, 0], [mapImage.height * factor, mapImage.width * factor]];
+  return bounds;
 }
 
 export async function centeringMap(map) {
-  const bounds = await getBounds(map);
-  const mapId = map._container.id;
-
-  const maxY = bounds._southWest.lat;
-  const maxX = bounds._northEast.lng;
-  const mapContainerHeight = $(`#${mapId}`).innerHeight();
-  const mapContainerWidth = $(`#${mapId}`).innerWidth();
-  const mapContainerHeightUnproject = map.unproject(
-    [0, mapContainerHeight],
-    map.getMaxZoom() - 1,
-  ).lat;
-  const mapContainerWidthUnproject = map.unproject(
-    [mapContainerWidth, 0],
-    map.getMaxZoom() - 1,
-  ).lng;
-  const centerY = (maxY / 2) - (mapContainerHeightUnproject / 2);
-  const centerX = (maxX / 2) - (mapContainerWidthUnproject / 2);
-  const minZoomRecalculate = (mapContainerWidthUnproject / maxX) * 4.4;
+  const bounds = await getBounds(map) || [[], []];
+  const centerY = bounds[1][0] / 2;
+  const centerX = bounds[1][1] / 2;
+  const minZoomRecalculate = await getFactor(map);
   map.options.minZoom = minZoomRecalculate;
-  map.setView(new L.LatLng(centerY, centerX), minZoomRecalculate);
+  const container = getMapContainer(map);
+  const mapImage = await getMapImage(map);
+  const maxZoomRecalculate = Math.ceil(
+    Math.log(
+      container.innerWidth() / mapImage.width > container.innerHeight() / mapImage.height
+        ? mapImage.width / container.innerWidth()
+        : mapImage.height / container.innerHeight(),
+    ) / Math.log(2),
+  );
+  map.options.maxZoom = maxZoomRecalculate;
+  map.setView([centerY, centerX], minZoomRecalculate);
 }
 
 // re-position search & notes
@@ -170,21 +203,23 @@ export function initInteractiveMap(id) {
       // https://codepen.io/joelf/pen/bjdMww
       // Using leaflet.js to pan and zoom a big image.
       // See also: http://kempe.net/blog/2014/06/14/leaflet-pan-zoom-image.html
+      // but bound use this comment: http://disq.us/p/1c32atj
 
       const mapId = $(this).attr('id');
-      const mapImage = $(this).attr('img-src');
+      const mapImgSrc = $(this).attr('img-src');
       const backgroundColor = $(this).attr('background-color');
 
       // give background color if any
       if (backgroundColor) $(this).css('background-color', backgroundColor);
 
-      if (L.DomUtil.get(mapImage)) {
-        L.DomUtil.get(mapImage).remove();
+      if (L.DomUtil.get(mapImgSrc)) {
+        L.DomUtil.get(mapImgSrc).remove();
       }
 
       // dimensions of the image map
-      const minZoom = 1.4;
-      const maxZoom = parseFloat($(this).attr('max-zoom') || 4);
+      // all of these 3 zoom info will be overriden in centeringMap(...)
+      const minZoom = 1;
+      const maxZoom = 4;
       const zoom = minZoom;
 
       const map = L.map(mapId, {
@@ -197,6 +232,8 @@ export function initInteractiveMap(id) {
       });
       initiatedMaps.push(map);
 
+      mapToggleLoader(id, true, true);
+
       // zoom control
       L.control.zoom({
         position: 'topright',
@@ -204,16 +241,38 @@ export function initInteractiveMap(id) {
 
       // add the image overlay,
       // so that it covers the entire map
+      // bounds follow this comment http://disq.us/p/1c32atj
       const bounds = await getBounds(map);
-      L.imageOverlay(mapImage, bounds).addTo(map);
+      L.imageOverlay(mapImgSrc, bounds).addTo(map);
 
       // tell leaflet that the map is exactly as big as the image
       map.setMaxBounds(bounds);
 
       // centering map
-      centeringMap(map);
+      const waitForCenteringMap = (delay) => new Promise((resolve) => setTimeout(() => {
+        centeringMap(map);
+        resolve();
+      }, delay));
+      await waitForCenteringMap(800);
+      mapToggleLoader(id, false);
     });
   }
+}
+
+export async function toggleCoordinateLog(map) {
+  const factor = await getFactor(map);
+  map.on('click', (ev) => {
+    console.log({
+      original: {
+        ...ev.latlng,
+        factor,
+      },
+      recomputed: {
+        lat: ev.latlng.lat / factor,
+        lng: ev.latlng.lng / factor,
+      },
+    });
+  });
 }
 
 export function markMap({

@@ -611,6 +611,10 @@
     display: flex;
   }
 
+    &.solid::before {
+      opacity: 1;
+    }
+
     &::before {
       content: '';
       position: absolute;

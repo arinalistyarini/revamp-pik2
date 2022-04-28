@@ -5885,6 +5885,9 @@ svg.leaflet-zoom-animated{will-change:transform}
 .interactive-map-wrapper .interactive-map-loader.shown{display:-webkit-box;display:-ms-flexbox;display:flex}
 
 
+.interactive-map-wrapper .interactive-map-loader.solid::before{opacity:1}
+
+
 .interactive-map-wrapper .interactive-map-loader::before{content:'';position:absolute;width:100%;height:100%;top:0;left:0;background-color:#38B124;opacity:0.6;z-index:1}
 
 
