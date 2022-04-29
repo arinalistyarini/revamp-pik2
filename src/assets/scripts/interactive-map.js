@@ -293,6 +293,7 @@ export function initInteractiveMap(id) {
 export async function toggleCoordinateLog(map) {
   const factor = await getFactor(map);
   map.on('click', (ev) => {
+    // http://disq.us/p/1c32atj
     console.log({
       lat: ev.latlng.lat / factor,
       lng: ev.latlng.lng / factor,
@@ -325,6 +326,7 @@ export async function markMap({
 
     const factor = await getFactor(getExistingMap(id));
     L.marker(
+      // http://disq.us/p/1c32atj
       [position[0] * factor, position[1] * factor],
       icon ? iconMarker : null,
     ).addTo(existingMap)
