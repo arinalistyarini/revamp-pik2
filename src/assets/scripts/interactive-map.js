@@ -233,7 +233,7 @@ export function initInteractiveMap(id) {
       // but bound use this comment: http://disq.us/p/1c32atj
 
       const mapId = $(this).attr('id');
-      interactiveMapAddOnsPositionAndClearSearch(id || mapId);
+      interactiveMapAddOnsPositionAndClearSearch(mapId);
 
       const mapImgSrc = $(this).attr('img-src');
       const backgroundColor = $(this).attr('background-color');
@@ -261,7 +261,7 @@ export function initInteractiveMap(id) {
       });
       initiatedMaps.push(map);
 
-      mapToggleLoader(id || getMapId(map), true, true);
+      mapToggleLoader(mapId, true, true);
 
       // zoom control
       L.control.zoom({
@@ -284,7 +284,7 @@ export function initInteractiveMap(id) {
       }, delay));
       await waitForCenteringMap(800);
       setTimeout(() => {
-        mapToggleLoader(id || getMapId(map), false);
+        mapToggleLoader(mapId, false);
       }, 400);
     });
   }
