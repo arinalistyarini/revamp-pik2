@@ -218,12 +218,9 @@
       //-   "lat": ...,
       //-   "lng": ...,
       //- }
-      //- to put in DB, please use the recomputed.lat & recomputed.lng
-      //- recomputed is the original lat/lng then / factor
       //- can be seen here: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/assets/scripts/interactive-map.js
       //- in function global.markMap({...}) (function to give mark); in 'position' object, please put:
-      //- position: [recomputed.lat, recomputed.lng]
-      //- if it's still confusing, please read this comment: http://disq.us/p/1c32atj
+      //- position: [lat, lng]
 
       function searchOnMap(el) {
         if (event.key === 'Enter' || event.keyCode === '13') {
@@ -276,8 +273,10 @@
           var map = global.getExistingMap(mapId);
           // centering map - FE custom function
           global.centeringMap(map);
-          //- or manually add your own LatLng
-          // map.setView([lat, lng]);
+          //- or manually add your own LatLng & zoom:
+          // map.setView([lat, lng], zoom);
+          // get current minZoom: map.getMinZoom()
+          // get current maxZoom: map.getMaxZoom()
         }
       }
 

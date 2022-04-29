@@ -120,7 +120,9 @@ block scripts
         var map = global.getExistingMap(mapId);
         // centering map - FE custom function
         global.centeringMap(map);
-        //- or manually add your own LatLng
-        // map.setView([lat, lng]);
+        //- or manually add your own LatLng & zoom:
+        // map.setView([lat, lng], zoom);
+        // get current minZoom: map.getMinZoom()
+        // get current maxZoom: map.getMaxZoom()
       }
     }
