@@ -54,7 +54,7 @@
     "@babel/runtime": "^7.17.9",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
-    "leaflet": "1.7.0",
+    "leaflet": "1.6.0",
     "leaflet-responsive-popup": "^0.6.4",
     "magnific-popup": "^1.1.0",
     "popper.js": "^1.16.0",

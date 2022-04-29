@@ -5618,7 +5618,7 @@ svg.leaflet-zoom-animated{will-change:transform}
 @media (max-width: 991px){.collapsible-list .collapsible-header{padding:4px 0}.collapsible-list .collapsible-header::after{right:16px}.collapsible-list .collapsible-header .icon-wrapper+.collapsible-header-title{padding-left:4px;margin-bottom:0}.collapsible-list .collapsible-body{padding:28px}}
 
 
-.interactive-map{padding-bottom:45%;position:relative}
+.interactive-map{padding-bottom:45%;position:relative;outline-offset:0;outline:none}
 
 
 .interactive-map .interactive-map-search{position:absolute;top:20px;left:20px;z-index:1000}
@@ -5825,7 +5825,7 @@ svg.leaflet-zoom-animated{will-change:transform}
 .interactive-map .leaflet-popup.marker-popup .leaflet-popup-tip-container .leaflet-popup-tip{background-color:transparent;-webkit-box-shadow:none;box-shadow:none;-webkit-transform:none;transform:none;margin:0;padding:0;width:0;height:0;opacity:0.7}
 
 
-.interactive-map .leaflet-top{z-index:499}
+.interactive-map .leaflet-top{z-index:100000000}
 
 
 .interactive-map-wrapper .interactive-map-search{z-index:499}

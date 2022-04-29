@@ -4470,10 +4470,10 @@ leaflet-responsive-popup@^0.6.4:
   resolved "https://registry.yarnpkg.com/leaflet-responsive-popup/-/leaflet-responsive-popup-0.6.4.tgz#b93d9368ef9f96d6dc911cf5b96d90e08601c6b3"
   integrity sha512-2D8G9aQA6NHkulDBPN9kqbUCkCpWQQ6dF0xFL11AuEIWIbsL4UC/ZPP5m8GYM0dpU6YTlmyyCh1Tz+cls5Q4dg==
 
-leaflet@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.7.0.tgz#896d4fefaf781eff9387e63a84ad93ebe99f3490"
-  integrity sha512-92v1ihuLMv0W0EWe/RCO8equfYijsoQB0RKDxUxYHy/BjKnP5s2XFkHU4JzKJGRjJUKex4em/C+FRxBjXpW+kg==
+leaflet@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.6.0.tgz#aecbb044b949ec29469eeb31c77a88e2f448f308"
+  integrity sha512-CPkhyqWUKZKFJ6K8umN5/D2wrJ2+/8UIpXppY7QDnUZW5bZL5+SEI2J7GBpwh4LIupOKqbNSQXgqmrEJopHVNQ==
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"

@@ -1,6 +1,8 @@
 .interactive-map {
   padding-bottom: 45%;
   position: relative;
+  outline-offset: 0;
+  outline: none;
 
   .interactive-map-search {
     position: absolute;
@@ -494,7 +496,7 @@
   }
 
   .leaflet-top {
-    z-index: 499;
+    z-index: 100000000;
   }
 }
 

@@ -22,7 +22,7 @@ block content
                 .spinner
             .interactive-map-request
               .text-request
-            .interactive-map-search
+            #pik-map-search.interactive-map-search
               input(type="text" placeholder="Explore..." onkeydown="searchOnMap(this)")
               .map-clear-search
             .interactive-map-notes
@@ -53,6 +53,7 @@ block scripts
     //- function which can be used here: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/app-global.js
     //- global.<the function>
     var mapId = 'pik-map';
+    //- window.global.initInteractiveMap();
 
     //- PLEASE READ BELOW FIRST FOR EASIER USED
     //- no need to bruteforce the coordinate
@@ -126,3 +127,10 @@ block scripts
         // get current maxZoom: map.getMaxZoom()
       }
     }
+
+    //- to run script after all script in /src/views/layouts/base.pug finish loading
+    //- window.addEventListener('load', function() {
+    //-   setTimeout(() => {
+    //-     yourOwnScript();
+    //-   });
+    //- });

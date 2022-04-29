@@ -118,7 +118,7 @@
               <div class="interactive-map-request">
                 <div class="text-request"></div>
               </div>
-              <div class="interactive-map-search"><input type="text" placeholder="Explore..." onkeydown="searchOnMap(this)">
+              <div class="interactive-map-search" id="pik-map-search"><input type="text" placeholder="Explore..." onkeydown="searchOnMap(this)">
                 <div class="map-clear-search"></div>
               </div>
               <div class="interactive-map-notes">
@@ -206,6 +206,7 @@
       //- function which can be used here: https://github.com/arinalistyarini/revamp-pik2/blob/main/src/app-global.js
       //- global.<the function>
       var mapId = 'pik-map';
+      //- window.global.initInteractiveMap();
 
       //- PLEASE READ BELOW FIRST FOR EASIER USED
       //- no need to bruteforce the coordinate
@@ -279,6 +280,13 @@
           // get current maxZoom: map.getMaxZoom()
         }
       }
+
+      //- to run script after all script in /src/views/layouts/base.pug finish loading
+      //- window.addEventListener('load', function() {
+      //-   setTimeout(() => {
+      //-     yourOwnScript();
+      //-   });
+      //- });
 
     </script>
   </body>

@@ -199,8 +199,18 @@ export function interactiveMapAddOnsPositionAndClearSearch(id) {
         search.prependTo(searchMapWrapper);
       }
 
-      // -- search
+      // to fix safari issue: unclickable div
       const searchInput = search.find('input');
+      // const searchId = search.attr('id');
+      // const searchDomUtil = L.DomUtil.get(searchId);
+      // L.DomEvent.on(searchDomUtil, 'click', (event) => {
+      //   L.DomEvent.preventDefault(event);
+      //   searchInput.trigger('focus');
+      // });
+
+
+      // -- search
+      // const searchInput = search.find('input');
       const searchEraser = search.find('.map-clear-search');
       if (searchInput.length) {
         searchInput.on('input', function searchOnInput() {
@@ -317,7 +327,7 @@ export async function markMap({
     const popupContent = content ? `<div class='popup-content-detail'>${content}</div>` : '';
     const iconPopup = L.responsivePopup({
       hasTip: false,
-      autoPan: true,
+      // autoPan: true,
       className: `marker-popup ${color}`,
       minWidth: 160,
       ...$(window).width() <= WIDTH_BREAKPOINT && { maxWidth: 280 },
