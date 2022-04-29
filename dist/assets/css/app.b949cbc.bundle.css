@@ -5909,6 +5909,12 @@ svg.leaflet-zoom-animated{will-change:transform}
 .interactive-map-wrapper .interactive-map-loader .text-request,.interactive-map-wrapper .interactive-map-request .text-request{color:#fff;font-weight:700;font-size:18px;z-index:501}
 
 
+.interactive-map-wrapper .interactive-map-loader .text-request a,.interactive-map-wrapper .interactive-map-request .text-request a{color:#fff}
+
+
+.interactive-map-wrapper .interactive-map-loader .text-request a:hover,.interactive-map-wrapper .interactive-map-request .text-request a:hover{cursor:pointer;text-decoration:underline}
+
+
 .interactive-map-wrapper .interactive-map-request::before{opacity:0.85}
 
 

@@ -684,6 +684,15 @@
       font-weight: 700;
       font-size: 18px;
       z-index: 501;
+
+      a {
+        color: #fff;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
     }
   }
 

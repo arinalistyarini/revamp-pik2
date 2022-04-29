@@ -34,7 +34,7 @@ export default function onResize() {
         imageCover();
         reviveBody();
         interactiveMapAddOnsPositionAndClearSearch();
-        mapShowRequest('Please refresh page');
+        mapShowRequest('<a onClick="window.location.reload();">Please refresh page</a>');
       }, 200, 'windowOnResize');
 
       previousWindowWidth = $(this).width();

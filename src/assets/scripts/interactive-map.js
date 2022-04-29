@@ -65,7 +65,7 @@ export function mapShowRequest(requestText) {
       if (request.length) {
         request.addClass('shown');
         toggleMapOperation(map, false);
-        request.find('.text-request').text(requestText);
+        request.find('.text-request').html(requestText);
       }
     });
   }
